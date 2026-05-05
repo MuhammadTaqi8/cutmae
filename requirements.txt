@@ -1,0 +1,31 @@
+# ── Core framework ────────────────────────────────────────────────────────────
+fastapi==0.111.0
+uvicorn[standard]==0.29.0        # includes uvloop + httptools for best perf
+gunicorn==22.0.0
+
+# ── Model ─────────────────────────────────────────────────────────────────────
+rembg==2.0.56
+onnxruntime==1.18.0              # CPU inference backend
+
+# ── Image handling ────────────────────────────────────────────────────────────
+Pillow==10.3.0
+
+# ── Rate limiting ─────────────────────────────────────────────────────────────
+slowapi==0.1.9
+
+# ── Metrics ───────────────────────────────────────────────────────────────────
+prometheus-fastapi-instrumentator==7.1.0
+
+# ── Config ────────────────────────────────────────────────────────────────────
+pydantic==2.7.1
+pydantic-settings==2.2.1
+
+# ── Logging ───────────────────────────────────────────────────────────────────
+structlog==24.1.0
+
+# ── Async HTTP server extras ──────────────────────────────────────────────────
+# uvloop==0.19.0
+httptools==0.6.1
+
+# ── Optional: BLAS speedup for onnxruntime on CPU (comment out if not needed)
+# onnxruntime-extensions==0.10.1

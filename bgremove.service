@@ -1,0 +1,70 @@
+# /etc/systemd/system/bgremove.service
+#
+# Deployment steps:
+#   sudo cp bgremove.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now bgremove
+#   sudo systemctl status bgremove
+#
+# Logs:
+#   journalctl -u bgremove -f
+
+[Unit]
+Description=Background Removal Microservice (FastAPI + Gunicorn)
+Documentation=https://github.com/yourorg/bgremove
+After=network.target
+Wants=network.target
+
+[Service]
+# ── Identity ──────────────────────────────────────────────────────────────────
+User=bgremove
+Group=bgremove
+
+# ── Working directory & virtualenv ────────────────────────────────────────────
+WorkingDirectory=/opt/bgremove
+Environment="PATH=/opt/bgremove/venv/bin"
+
+# ── Environment overrides ─────────────────────────────────────────────────────
+# Put secrets in /etc/bgremove.env (mode 0600, owned by bgremove)
+EnvironmentFile=-/etc/bgremove.env
+Environment="BIND=127.0.0.1:8000"
+Environment="WEB_CONCURRENCY=4"
+Environment="WORKER_TIMEOUT=120"
+Environment="LOG_LEVEL=info"
+# Uncomment and set a strong random value to enable API-key auth:
+# Environment="API_KEY=changeme"
+
+# ── Start / stop ──────────────────────────────────────────────────────────────
+ExecStart=/opt/bgremove/venv/bin/gunicorn -c gunicorn.conf.py main:app
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=35
+
+# ── Restart policy ────────────────────────────────────────────────────────────
+Restart=on-failure
+RestartSec=5
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+# ── Security hardening ────────────────────────────────────────────────────────
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/opt/bgremove /tmp /home/bgremove/.u2net
+ProtectHome=true
+NoNewPrivileges=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+PrivateDevices=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+
+# ── Resource limits ───────────────────────────────────────────────────────────
+LimitNOFILE=65536
+# Prevent OOM kills taking down everything else on a small VPS:
+# OOMScoreAdjust=200
+
+[Install]
+WantedBy=multi-user.target

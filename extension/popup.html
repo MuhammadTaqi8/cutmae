@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Cutmage</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{width:300px;font-family:'Segoe UI',system-ui,sans-serif;background:#f7f7f5;color:#111118}
+
+.header{display:flex;align-items:center;gap:9px;padding:16px 16px 12px;border-bottom:1px solid #e4e2db}
+.logo-mark{width:28px;height:28px;background:#111118;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-mark svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.logo-text{font-size:16px;font-weight:700;letter-spacing:-.03em}
+.logo-badge{margin-left:auto;font-size:10px;font-weight:600;color:#16a34a;background:#f0fdf4;border:1px solid #bbf7d0;padding:2px 8px;border-radius:20px}
+
+.body{padding:16px}
+.hint{font-size:12px;color:#6b7080;margin-bottom:14px;line-height:1.5}
+.hint strong{color:#111118}
+
+.drop-zone{border:2px dashed #ccc9bf;border-radius:12px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s;background:#fff;position:relative}
+.drop-zone:hover,.drop-zone.drag-over{border-color:#111118;background:#f0efe9}
+.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.drop-icon{margin-bottom:8px}
+.drop-icon svg{width:28px;height:28px;stroke:#a0a8ba;fill:none;stroke-width:1.5}
+.drop-zone.drag-over .drop-icon svg{stroke:#111118}
+.drop-title{font-size:13px;font-weight:600;color:#3a3a50;margin-bottom:3px}
+.drop-sub{font-size:11px;color:#a0a8ba}
+
+.state{display:none;flex-direction:column;align-items:center;padding:20px 0;gap:8px}
+.state.active{display:flex}
+.spinner{width:28px;height:28px;border:3px solid #e4e2db;border-top-color:#111118;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.state-text{font-size:13px;color:#3a3a50;font-weight:500}
+.state-sub{font-size:11px;color:#a0a8ba}
+
+.result{display:none;flex-direction:column;gap:10px}
+.result.active{display:flex}
+.result-img{width:100%;border-radius:10px;border:1px solid #e4e2db;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><rect width="10" height="10" fill="%23ddd"/><rect x="10" y="10" width="10" height="10" fill="%23ddd"/></svg>') repeat}
+.btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .15s;text-decoration:none}
+.btn-primary{background:#111118;color:#fff}
+.btn-primary:hover{background:#1e1e30}
+.btn-secondary{background:#f0efe9;color:#3a3a50;border:1px solid #e4e2db}
+.btn-secondary:hover{background:#e4e2db}
+.btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+
+.error-box{display:none;background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px;font-size:12px;color:#dc2626;line-height:1.5}
+.error-box.active{display:block}
+
+.footer{padding:10px 16px;border-top:1px solid #e4e2db;text-align:center}
+.footer a{font-size:11px;color:#a0a8ba;text-decoration:none}
+.footer a:hover{color:#111118}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-mark">
+    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+  </div>
+  <span class="logo-text">Cutmage</span>
+  <span class="logo-badge">Free</span>
+</div>
+
+<div class="body">
+  <p class="hint"><strong>Tip:</strong> Right-click any image on a webpage and select "Remove Background with Cutmage" — or upload a file below.</p>
+
+  <!-- Upload zone -->
+  <div class="drop-zone" id="dropZone">
+    <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp"/>
+    <div class="drop-icon">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+    </div>
+    <div class="drop-title">Upload an image</div>
+    <div class="drop-sub">JPEG, PNG or WebP · max 10 MB</div>
+  </div>
+
+  <!-- Processing state -->
+  <div class="state" id="stateProcessing">
+    <div class="spinner"></div>
+    <div class="state-text">Removing background…</div>
+    <div class="state-sub">Usually takes 3–10 seconds</div>
+  </div>
+
+  <!-- Result -->
+  <div class="result" id="stateResult">
+    <img class="result-img" id="resultImg" src="" alt="Result"/>
+    <a class="btn btn-primary" id="downloadBtn" download="cutmage-result.png">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download PNG
+    </a>
+    <button class="btn btn-secondary" id="resetBtn">Remove another</button>
+  </div>
+
+  <!-- Error -->
+  <div class="error-box" id="errorBox"></div>
+</div>
+
+<div class="footer">
+  <a href="https://cutmage.com" target="_blank">cutmage.com</a>
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>

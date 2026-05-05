@@ -143,16 +143,16 @@ nav{position:sticky;top:0;z-index:300;height:60px;padding:0 28px;display:flex;al
 .nav-cta:hover{background:#1e1e30;transform:translateY(-1px)}
 
 /* ─── HERO ─── */
-.hero{padding:64px 24px 0;text-align:center;position:relative;overflow:hidden}
+.hero{padding:28px 24px 0;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0,black,transparent);opacity:.45;pointer-events:none}
 .hero-in{position:relative;z-index:1;max-width:800px;margin:0 auto}
 .hero-chip{display:inline-flex;align-items:center;gap:7px;padding:5px 14px 5px 8px;border-radius:50px;background:var(--green-soft);border:1px solid var(--green-border);font-size:12px;font-weight:600;color:var(--green);margin-bottom:24px;animation:fu .5s .05s ease both}
 .hero-chip .cdot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(22,163,74,.15)}
 @keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-h1{font-family:var(--serif);font-size:clamp(42px,7.5vw,86px);font-weight:900;line-height:.93;letter-spacing:-.04em;color:var(--ink);margin-bottom:22px;animation:fu .6s .1s ease both}
+h1{font-family:var(--serif);font-size:clamp(32px,5.5vw,62px);font-weight:900;line-height:.95;letter-spacing:-.04em;color:var(--ink);margin-bottom:16px;animation:fu .6s .1s ease both}
 h1 .em{font-style:italic;color:var(--blue)}
-.hero-sub{font-size:17px;color:var(--muted);line-height:1.65;max-width:480px;margin:0 auto 32px;animation:fu .6s .15s ease both}
-.trust{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:48px;animation:fu .6s .2s ease both}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.55;max-width:480px;margin:0 auto 16px;animation:fu .6s .15s ease both}
+.trust{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-bottom:0;animation:fu .6s .2s ease both}
 .ti{display:flex;align-items:center;gap:5px}
 .ti svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2.5;flex-shrink:0}
 .ts{width:3px;height:3px;border-radius:50%;background:var(--border2)}
@@ -176,7 +176,7 @@ h1 .em{font-style:italic;color:var(--blue)}
 .dc-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:50px;background:var(--green-soft);color:var(--green);border:1px solid var(--green-border)}
 
 /* ─── UPLOAD CARD ─── */
-.tool-wrap{max-width:880px;margin:0 auto;padding:0 24px 52px}
+.tool-wrap{max-width:880px;margin:0 auto;padding:20px 24px 52px}
 .tool-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);box-shadow:var(--sh3);overflow:hidden}
 .drop-zone{position:relative;padding:56px 32px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;border-bottom:1px solid var(--border);background:var(--bg2);cursor:pointer;transition:background .2s;overflow:hidden;min-height:240px}
 .drop-zone::before{content:'';position:absolute;inset:10px;border:2px dashed var(--border2);border-radius:12px;pointer-events:none;transition:border-color .25s}
@@ -425,7 +425,7 @@ footer{padding:28px 28px;border-top:1px solid var(--border);display:flex;align-i
 
     <!-- Keyword-dense opening paragraph — first 150 words seen by Google -->
     <p class="hero-sub" itemprop="description">
-      Cutmage is a free AI background remover that lets you <strong>remove background from any image</strong> online in seconds — no sign-up, no watermark, no limits. Upload a portrait, product photo, pet picture, or any JPEG, PNG, or WebP file, and our AI instantly cuts out the subject with pixel-perfect precision. Then <strong>change the photo background</strong> to any solid color, gradient, or your own image — all in one click. Download your transparent PNG or JPEG at full resolution, free forever.
+      <strong>Remove background from any image</strong> in seconds — no sign-up, no watermark, no limits. Then replace it with a color, gradient, or your own photo.
     </p>
 
     <div class="trust" aria-label="Key benefits">
@@ -441,13 +441,6 @@ footer{padding:28px 28px;border-top:1px solid var(--border);display:flex;align-i
     </div>
   </div>
 </header>
-
-<!-- ═══ DEMO GALLERY ═══ -->
-<section class="demos" aria-labelledby="demos-title">
-  <h2 id="demos-title" style="text-align:center;font-family:var(--serif);font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:-.03em;color:var(--ink);margin-bottom:8px">See Background Removal Results — Before &amp; After</h2>
-  <p class="demo-label" style="margin-bottom:20px">Hover any card to see the AI background remover in action across different photo types ✦</p>
-  <div class="demo-row" id="demo-row" role="list"></div>
-</section>
 
 <!-- ═══ UPLOAD TOOL ═══ -->
 <main id="tool" class="tool-wrap" aria-labelledby="tool-heading">
@@ -473,6 +466,13 @@ footer{padding:28px 28px;border-top:1px solid var(--border);display:flex;align-i
     </div>
   </div>
 </main>
+
+<!-- ═══ DEMO GALLERY ═══ -->
+<section class="demos" aria-labelledby="demos-title">
+  <h2 id="demos-title" style="text-align:center;font-family:var(--serif);font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:-.03em;color:var(--ink);margin-bottom:8px">See Background Removal Results — Before &amp; After</h2>
+  <p class="demo-label" style="margin-bottom:20px">Hover any card to see the AI background remover in action across different photo types ✦</p>
+  <div class="demo-row" id="demo-row" role="list"></div>
+</section>
 
 <!-- ERROR -->
 <div class="err-wrap" id="err-wrap" role="alert" aria-live="assertive">

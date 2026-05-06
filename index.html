@@ -1020,7 +1020,7 @@ canvas#net-canvas{will-change:auto}
       <strong>Cutmage</strong> is a free AI-powered <strong>background remover</strong> that lets you <strong>remove background from any image</strong> directly in your browser — in seconds. Whether you want to <strong>remove background from photo</strong> for a portrait, <strong>remove white background from image</strong> for a logo, or create a <strong>transparent background</strong> for a product shot, Cutmage handles it with pixel-perfect precision. No watermark. No sign-up. No credit card. Completely free.
     </p>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px">
+    <!-- <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px">
       <div>
         <h3 style="font-family:var(--head);font-size:20px;font-weight:700;color:var(--ink);margin-bottom:14px">Supported Background Removal Types</h3>
         <ul style="font-family:var(--sans);font-size:15px;line-height:1.9;color:var(--muted);list-style:none;padding:0">
@@ -1045,8 +1045,320 @@ canvas#net-canvas{will-change:auto}
           <p style="font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.6"><strong>Why switch to Cutmage?</strong> Most online background removers limit free users to low-resolution downloads, add watermarks, or require a paid subscription for HD output. Cutmage is 100% free — no credits, no watermarks, no account needed — always delivering full-resolution transparent PNG results at zero cost.</p>
         </div>
       </div>
+    </div> -->
+
+
+    <section class="bg-section">
+  <div class="bg-grid">
+
+    <!-- LEFT CARD -->
+    <div class="bg-card">
+      <div class="card-head">
+        <div class="icon-wrap">✦</div>
+        <h3>Supported Background Removal Types</h3>
+      </div>
+
+      <ul class="feature-list">
+        <li>
+          <span class="check">✓</span>
+          <div>
+            <strong>Portrait background remover</strong>
+            <p>Headshots, ID photos, LinkedIn profiles</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <div>
+            <strong>Product photo background removal</strong>
+            <p>Amazon, eBay, Shopify, Etsy listings</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <div>
+            <strong>Remove white background from image</strong>
+            <p>Logos, graphics, icons, branding assets</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <div>
+            <strong>Pet & animal background eraser</strong>
+            <p>Handles fur, feathers, and fine edges</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <div>
+            <strong>Transparent background maker</strong>
+            <p>Create PNGs for stickers and design assets</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <div>
+            <strong>Cut out image online</strong>
+            <p>Clothing, shoes, accessories, vehicles</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <div>
+            <strong>Background changer</strong>
+            <p>Replace with colors, gradients, or photos</p>
+          </div>
+        </li>
+      </ul>
     </div>
 
+    <!-- RIGHT CARD -->
+    <div class="bg-card">
+      <div class="card-head">
+        <div class="icon-wrap">⚡</div>
+        <h3>How to Remove Background from Image Free</h3>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <strong>Upload your image</strong>
+            <p>Drag & drop or paste any JPEG, PNG, or WebP file up to 10 MB.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <strong>AI removes the background</strong>
+            <p>Precise edge detection in under 5 seconds.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <strong>Replace or customize</strong>
+            <p>Add a color, gradient, or your own image background.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <div>
+            <strong>Download free</strong>
+            <p>Get full-resolution transparent PNGs with no watermark.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <strong>Why switch to Cutmage?</strong>
+        <p>
+          Most tools restrict HD downloads, add watermarks, or require credits.
+          Cutmage stays completely free with full-resolution transparent PNG exports —
+          no signup, no watermark, no limits.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.bg-section{
+  margin-top:48px;
+}
+
+.bg-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:28px;
+}
+
+.bg-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:28px;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.03),
+    0 12px 30px rgba(0,0,0,.04);
+  transition:.25s ease;
+}
+
+.bg-card:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.05),
+    0 18px 40px rgba(0,0,0,.06);
+}
+
+.card-head{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:24px;
+}
+
+.icon-wrap{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(
+    135deg,
+    var(--primary-c),
+    #7c4dff
+  );
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
+  box-shadow:0 8px 18px rgba(124,77,255,.22);
+}
+
+.card-head h3{
+  margin:0;
+  font-family:var(--head);
+  font-size:22px;
+  line-height:1.2;
+  color:var(--ink);
+}
+
+.feature-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+.feature-list li{
+  display:flex;
+  gap:14px;
+  padding:16px 0;
+  border-bottom:1px solid var(--border-l);
+}
+
+.feature-list li:last-child{
+  border-bottom:none;
+  padding-bottom:0;
+}
+
+.check{
+  flex-shrink:0;
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(124,77,255,.1);
+  color:var(--primary-c);
+  font-size:14px;
+  font-weight:700;
+  margin-top:2px;
+}
+
+.feature-list strong,
+.steps strong{
+  display:block;
+  color:var(--ink);
+  font-size:15px;
+  margin-bottom:4px;
+}
+
+.feature-list p,
+.steps p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.65;
+}
+
+.steps{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.step{
+  display:flex;
+  gap:14px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--border-l);
+}
+
+.step:last-child{
+  border-bottom:none;
+  padding-bottom:0;
+}
+
+.step-num{
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(
+    135deg,
+    var(--primary-c),
+    #7c4dff
+  );
+  color:#fff;
+  font-weight:700;
+  font-size:14px;
+  flex-shrink:0;
+  box-shadow:0 8px 18px rgba(124,77,255,.18);
+}
+
+.highlight-box{
+  margin-top:24px;
+  padding:18px;
+  border-radius:18px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124,77,255,.08),
+      rgba(124,77,255,.03)
+    );
+  border:1px solid rgba(124,77,255,.12);
+}
+
+.highlight-box strong{
+  display:block;
+  color:var(--ink);
+  margin-bottom:8px;
+  font-size:15px;
+}
+
+.highlight-box p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+}
+
+@media (max-width: 900px){
+
+  .bg-grid{
+    grid-template-columns:1fr;
+  }
+
+  .bg-card{
+    padding:22px;
+    border-radius:20px;
+  }
+
+  .card-head h3{
+    font-size:20px;
+  }
+}
+</style>
   </div>
 </article>
 

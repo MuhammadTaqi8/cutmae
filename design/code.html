@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cutmage | Surgical Clarity for the Modern Web</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "primary-container": "#009af6",
+                    "primary": "#00629f",
+                    "primary-fixed-dim": "#9bcbff",
+                    "surface-tint": "#00629f",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "tertiary": "#914c00",
+                    "on-primary-container": "#002f50",
+                    "on-surface-variant": "#3f4752",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-container-high": "#dce9ff",
+                    "on-background": "#0b1c30",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#c8c6c6",
+                    "primary-fixed": "#d0e4ff",
+                    "surface": "#f8f9ff",
+                    "secondary-fixed": "#e4e2e1",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#213145",
+                    "tertiary-fixed": "#ffdcc4",
+                    "surface-variant": "#d3e4fe",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#e4e2e1",
+                    "surface-container-low": "#eff4ff",
+                    "on-surface": "#0b1c30",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-secondary-fixed-variant": "#474747",
+                    "secondary": "#5f5e5e",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#cbdbf5",
+                    "on-tertiary-fixed": "#2f1500",
+                    "tertiary-fixed-dim": "#ffb77f",
+                    "on-primary-fixed-variant": "#004a79",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#9bcbff",
+                    "surface-container": "#e5eeff",
+                    "on-primary-fixed": "#001d34",
+                    "outline": "#6f7883",
+                    "outline-variant": "#bfc7d4",
+                    "on-tertiary-container": "#492300",
+                    "on-secondary-container": "#656464",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#e17900",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#6f3900"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "gutter": "24px",
+                    "xs": "4px",
+                    "sm": "12px",
+                    "lg": "48px",
+                    "base": "8px",
+                    "container-max": "1200px",
+                    "xl": "80px"
+            },
+            "fontFamily": {
+                    "headline-h3": ["Inter"],
+                    "body-md": ["Manrope"],
+                    "caption": ["Manrope"],
+                    "headline-h1": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Manrope"],
+                    "headline-h2": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "headline-h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-h2": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .comparison-slider-handle {
+            box-shadow: 0 12px 32px rgba(45, 45, 45, 0.08);
+        }
+        .ambient-shadow {
+            box-shadow: 0 4px 20px rgba(45, 45, 45, 0.05);
+        }
+        .active-shadow {
+            box-shadow: 0 12px 32px rgba(45, 45, 45, 0.08);
+        }
+        .checkerboard {
+            background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+        .hero-split-viz {
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-lg">
+<span class="text-headline-h3 font-headline-h3 font-bold text-primary">Cutmage</span>
+<nav class="hidden md:flex gap-md items-center">
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary hover:text-primary transition-colors duration-200" href="#">Product</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Pricing</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">API</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-sm">
+<button class="font-label-md text-label-md text-secondary hover:text-primary px-md py-xs transition-colors">Log in</button>
+<button class="bg-primary-container text-on-secondary px-md py-sm rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">Sign up free</button>
+</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Redesigned Hero Section -->
+<section class="relative overflow-hidden pt-xl pb-20">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 lg:grid-cols-2 gap-xl items-center relative z-10">
+<!-- Left Content -->
+<div class="space-y-md">
+<div class="inline-flex items-center gap-xs px-sm py-xs bg-primary-container/10 text-primary rounded-full font-label-md text-label-md mb-base">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>AI-Powered Precision</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-background leading-tight">
+                    Surgical clarity for <span class="text-primary-container">every image</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                    Instantly remove backgrounds with pro-level accuracy. Our neural networks isolate complex subjects in 5 seconds or less, for free.
+                </p>
+<div class="flex flex-col gap-md pt-base">
+<div class="flex flex-col sm:flex-row gap-sm">
+<button class="bg-primary-container text-on-secondary px-lg py-md rounded-xl font-label-md text-label-md flex items-center justify-center gap-xs active-shadow hover:opacity-95 transition-all">
+<span class="material-symbols-outlined" data-icon="upload">upload</span>
+                            Upload Image
+                        </button>
+<button class="border border-outline-variant text-on-surface px-lg py-md rounded-xl font-label-md text-label-md flex items-center justify-center gap-xs hover:bg-surface-container-low transition-all">
+                            Try demo image
+                        </button>
+</div>
+<p class="font-caption text-caption text-on-surface-variant/60">
+                        Free for personal use · No signup required · Supports JPG, PNG, WebP
+                    </p>
+</div>
+</div>
+<!-- Right Visual (Split Screen Visualization) -->
+<div class="relative w-full aspect-square lg:aspect-auto lg:h-[500px] rounded-2xl overflow-hidden ambient-shadow bg-surface-container-low border border-outline-variant/10">
+<div class="absolute inset-0 flex">
+<!-- Original Side -->
+<div class="w-1/2 h-full relative overflow-hidden group">
+<img alt="Complex subject original" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3FpKfT4BffdUI-1M70dxuQ0WY6j3n6_helxBai62HaJgAluGI5HUN6a71Edt_4Ilscv7dzAJs49RFxrcMCqSGwfQKsjRhLysqHcYwTu6gf4m-56B0xQeA7PfpAhxDQpvey_KTgksZO6p9aRsSpod4WoKA591aJacL06wdAGPjLurcY6JvcIDw4hEg25D7fqsXyNPNbjXBPidgBCMIC6rgFDOaJi_tVBBysSzP7uw1gA212LdL1qWrmFM1_xZ62QV9qOaU7f5__LQz"/>
+<div class="absolute top-md left-md bg-black/40 backdrop-blur-md text-white px-sm py-xs rounded-lg text-[10px] font-bold tracking-widest uppercase">Before</div>
+</div>
+<!-- Result Side -->
+<div class="w-1/2 h-full relative overflow-hidden checkerboard border-l-2 border-white/20">
+<img alt="Complex subject result" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoad7OwgpSrbWhqbpDXhz_lOyKqA0RHsefEZBKc6HcUAc_5Hx-qyxgFS50pbE9xtpPYMya-cf2J-fb_QY1pT2J52T3IhfCHLKX0hGlq2TTdeBc36CMF6md4Xo0enPvXoJdcAUeHEy5-O-mQ72ytyS1kU4XjcvjTZ-IjeOMdEwtA5-P6G1vAspuy4HAKx3UHhR0ybYIoECdF0GgBw6I9039mfsb6b5w5SbVMGY7DzTF1tm1Wmqh4R_HhEcjcwUrBqMTOQ4X57mSWDMw" style="clip-path: inset(0 0 0 0); filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));"/>
+<!-- Simulation of background removal on the right half -->
+<div class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+<div class="bg-primary-container/90 text-on-secondary px-md py-sm rounded-lg font-label-md shadow-xl flex items-center gap-xs scale-90 sm:scale-100">
+<span class="material-symbols-outlined text-[20px]">auto_fix_high</span>
+                                Perfect Edges
+                            </div>
+</div>
+<div class="absolute top-md right-md bg-primary-container/80 backdrop-blur-md text-on-secondary px-sm py-xs rounded-lg text-[10px] font-bold tracking-widest uppercase">After</div>
+</div>
+</div>
+<!-- Interactive Handle UI element (Visual only) -->
+<div class="absolute top-0 bottom-0 left-1/2 -translate-x-px w-0.5 bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)] z-20">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-2xl">
+<span class="material-symbols-outlined text-primary text-[20px]">unfold_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Social Proof Logo Bar (Integrated with Hero bottom) -->
+<div class="max-w-container-max mx-auto px-gutter mt-20 pt-lg border-t border-outline-variant/20">
+<p class="font-label-md text-label-md text-center text-on-surface-variant mb-md uppercase tracking-widest opacity-60">Trusted by 2M+ creators and brands</p>
+<div class="flex flex-wrap justify-center items-center gap-xl opacity-40 grayscale">
+<img alt="Shopify Logo" class="h-6 sm:h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8YNYNQp37R1mG3ylojNJpV_S9Uca7eFhITEkMzYaRlGIuFcx_MAlzh8TUHzJhP9oEoOZmF2GHP4NtDTIcASy0JTp1UA215Ke82iGzc_s_2SwE-JetZLSLchVIb6qzmHFNYMWS7ElJnYOfdKi_JcSDeFAGNPEkINu9jBXQ3mNOAUKbn2RupInTF5Lylu38Rgi3P-cpfoQCiDyzjkAh0LavSdeijjbOAPaPaJqIGJO7gFmAeZ3By2KImZ3Ue6YYEE-7BqiUagSihTu-"/>
+<img alt="Canva Logo" class="h-6 sm:h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdITKcMGmehMNVZKdS1wFPv0b9pom3MgMYHYBJXgcCuAINQn7BH3_CzCljPD2tAjLOV6B9da__YqV5Y7Z-zyt3_mQ4EkrZzXtUk2Mq-9AOBZCa0bjGDA1pnq1K9L9bsdfPs9tyljc9jWutN3KxvQJNqqizEpIV8aQKCzCjK2VSIDT85693yjv2vx_sjd9XloTIrLmp8CZpSHwXbDrPhQc-blTEJWCAeTVDN7VZioD7vxCmeS9pP7vS_CZ9bRf486mawbPXlK_ierci"/>
+<img alt="Adobe Logo" class="h-6 sm:h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAceyo6sPbMnYkDOFv93kzRVHvYKM44nYduOpvU3Eo-rgCYXvXA9GsxOshmEo153OFx6ZHsE_NFFqn_1ki4fChmDDakFvyTM5XrNr-GHCdj6lHHUWfn0ENJ-dAiR6dGGI0-W25KHLoJe949jDJdMZczErNTSaDl7bg2XbgYfZ8aWlut8ud5vubFUIR73wjr74Bzw2oE39BehfSJafHYcynhtWuJ3qaGFhfbH-QkDIOhEfVVaFEE4nBfdiRcTwXnqOSFS1NBp9DWovBL"/>
+<img alt="Etsy Logo" class="h-6 sm:h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA0lHURlwohsH5PLaqjzXZaQTRFw37XlViDVmv5iu-KgOt2iJPSDzdde3XXZLAe6YNb-_WURLXbvmIiNpRQsUgXOQsw9mNsfkt9XBRCQRi9S_YpjTRpk8jaDkOGlhWDDKt0oARfje65-zj-z7yxIkO40MubGNkpNpgjafOEbDQV7AR3dAdAJLJzWKsAWePsr5TwD-5HH3NeergSZsP8U8Agi2alDyEs2yTrwDhD9qUjasSuxH-G_mM_ydearly0_nVxUAPsD_oh4Dp"/>
+</div>
+</div>
+</section>
+<!-- Interactive Section (Remains Distinct) -->
+<section class="py-xl bg-surface-container-low/30 border-y border-outline-variant/10">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-lg">
+<h2 class="font-headline-h2 text-headline-h2 text-on-background mb-sm">Master Every Detail</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">From product photography to automotive marketing, see how Cutmage handles specific categories with surgical precision.</p>
+</div>
+<div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-outline-variant/20">
+<!-- Category Selector -->
+<div class="flex overflow-x-auto border-b border-outline-variant/10 p-md gap-sm justify-center bg-surface-container-lowest">
+<button class="flex items-center gap-xs px-md py-sm rounded-full bg-primary-container text-on-secondary font-label-md transition-all whitespace-nowrap">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+                        Product
+                    </button>
+<button class="flex items-center gap-xs px-md py-sm rounded-full hover:bg-surface-container-high text-on-surface-variant font-label-md transition-all whitespace-nowrap">
+<span class="material-symbols-outlined text-[20px]">person</span>
+                        Portrait
+                    </button>
+<button class="flex items-center gap-xs px-md py-sm rounded-full hover:bg-surface-container-high text-on-surface-variant font-label-md transition-all whitespace-nowrap">
+<span class="material-symbols-outlined text-[20px]">pets</span>
+                        Animal
+                    </button>
+<button class="flex items-center gap-xs px-md py-sm rounded-full hover:bg-surface-container-high text-on-surface-variant font-label-md transition-all whitespace-nowrap">
+<span class="material-symbols-outlined text-[20px]">directions_car</span>
+                        Car
+                    </button>
+</div>
+<div class="p-md lg:p-lg bg-white">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-md">
+<div class="relative group">
+<div class="aspect-square lg:aspect-video rounded-xl overflow-hidden bg-surface-container relative">
+<img alt="Product original" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCNuJWa73QJMh-lKSzSAgF3aXofdzJAVkjn00IcEZmiamyKpN_UyTcPOM2YjzyIYSFy2tjMr6eJTsuuVmIjahynJauEpi9-u-11IWMy5L5RdqIT88pXzyS1dpsgoPsoYsFuZ0VAImfcvzEg87etRTEEE4jTrwa0Iu4N3uWUAkpEUR8_bY74pd4pm45e7ERePY_35tZAH5Pt80PcNNDz4ikBG_Kq7MOc2vzKnh2jLtdTuMlbXuaQi8EW7lPZD6Vcl8IlVu-7EP-6Wri"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="absolute top-sm left-sm bg-black/60 backdrop-blur-md text-white px-sm py-1 rounded text-[10px] font-bold tracking-wider uppercase">Original</div>
+</div>
+<div class="relative group">
+<div class="aspect-square lg:aspect-video rounded-xl overflow-hidden checkerboard relative z-0">
+<img alt="Product result" class="w-full h-full object-contain relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSB7SU4xTpSxp53sGUrzZ3R7fLnefrRY2KfKl2IAoinhdSNeR-m6cWxl7MXa95ss0NfbM5FfJVn1dvOGRyeJIidWFC8zOaKs9jdpx7DVMzbiRmBAHKCDhheGD7phFVU6an335trG6dReiaGn6ftyT3RkbSZE4FjALF9nN1gZv-q7TvN_xaG77SjYmh2AySKvm37CBsTkQZqGATfVqhVwTyMjG_UNeeNqBKBpYeV9ugrWv4maffev-tq-E_-LJingFYPXyzZ0KTmPNU"/>
+</div>
+<div class="absolute top-sm left-sm bg-primary-container text-on-secondary px-sm py-1 rounded text-[10px] font-bold tracking-wider uppercase">Isolated Subject</div>
+</div>
+</div>
+<div class="mt-lg pt-lg border-t border-outline-variant/10 flex flex-col items-center">
+<button class="bg-primary-container text-on-secondary px-xl py-md rounded-xl font-label-md text-label-md flex items-center gap-xs hover:opacity-95 active:scale-95 transition-all shadow-lg">
+<span class="material-symbols-outlined">upload</span>
+                            Try with Your Own Image
+                        </button>
+<p class="mt-sm font-caption text-caption text-on-surface-variant">Batch processing available via API</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Key Benefits -->
+<section class="py-xl px-gutter max-w-container-max mx-auto">
+<div class="mb-lg text-center max-w-2xl mx-auto">
+<h2 class="font-headline-h2 text-headline-h2 text-on-background mb-sm">Engineered for Precision</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Our advanced neural networks handle the toughest edges, from intricate hair to complex transparent objects.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<div class="p-md bg-white rounded-xl ambient-shadow border border-outline-variant/10 hover:active-shadow transition-all group">
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-sm text-primary">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</div>
+<h3 class="font-headline-h3 text-headline-h3 mb-xs text-on-background">Lightning-fast</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Get your image back in seconds – no waiting, no manual editing.</p>
+</div>
+<div class="p-md bg-white rounded-xl ambient-shadow border border-outline-variant/10 hover:active-shadow transition-all group">
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-sm text-primary">
+<span class="material-symbols-outlined" data-icon="auto_fix_high" data-weight="fill" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+</div>
+<h3 class="font-headline-h3 text-headline-h3 mb-xs text-on-background">Pixel-perfect</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Pro-grade accuracy retains fine hair, fur and edge details with ease.</p>
+</div>
+<div class="p-md bg-white rounded-xl ambient-shadow border border-outline-variant/10 hover:active-shadow transition-all group">
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-sm text-primary">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<h3 class="font-headline-h3 text-headline-h3 mb-xs text-on-background">E-commerce ready</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Automate clean backgrounds and drop shadows for flawless shots.</p>
+</div>
+<div class="p-md bg-white rounded-xl ambient-shadow border border-outline-variant/10 hover:active-shadow transition-all group">
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-sm text-primary">
+<span class="material-symbols-outlined" data-icon="api">api</span>
+</div>
+<h3 class="font-headline-h3 text-headline-h3 mb-xs text-on-background">API Integration</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Integrate for batch processing – remove backgrounds from thousands.</p>
+</div>
+</div>
+</section>
+<!-- Use Cases -->
+<section class="py-xl bg-surface-container-low/50">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="mb-lg text-center max-w-2xl mx-auto">
+<h2 class="font-headline-h2 text-headline-h2 text-on-background mb-sm">Tailored for Every Workflow</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Whether you're selling one item or managing a million images, Cutmage scales with you.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="relative overflow-hidden rounded-xl bg-white ambient-shadow h-full flex flex-col">
+<div class="h-48 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXoL9mj4J7hi3dn0h0Zt1veura1Ig7BSRUVWEtKzHmvk-ErKvY8jM0gpHi0nB4ADPXIpAv3P_hpZ9de_GQZ6iE4lfsEiFsOC6EAuDd4jws5U5my7EFGJ7I40MlQj5_GJwpACwQXt58VEVpSxlz4YsuK4tIsra1Bg6dYqwqvWcl6OQShKWX3MO1Ne-QMljix9ySZ9bHG1uMLgsyeFcjvDX8eZ03wiBBrl_agOZ2QVgzPR-1WjMnrJot9P-jonnxrbj4gugoqAj1nYR9')"></div>
+<div class="p-md">
+<h4 class="font-headline-h3 text-headline-h3 mb-xs">Online Stores</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Turn product photos into shop-ready images. Consistent listings with zero manual effort.</p>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-xl bg-white ambient-shadow h-full flex flex-col">
+<div class="h-48 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC0Q4n-hvL50LV6mCKeqP7VtTxIUWnPgMrfKB2wWNRCYLPC6rViSEncGNEgwsLvUbEBqRxaUPyWzm0JwPl8JGG4twvhBL2xKeBdvlSuq8fiidFIFYfbQWTJuJycDB1S1-YItKWOofrzsw7jul8-uABhQelH18IW8o0Op9PqKU1cHDv7eRs7TfPFKOhu6gRh3h1z1HrEs_H_cncOo8XoWiS7Xo-fDML-9tS1Yk0Ngt1u9Ii7ZKXilfUlhX7WyorUFqsAqbXlsn_2enX_')"></div>
+<div class="p-md">
+<h4 class="font-headline-h3 text-headline-h3 mb-xs">Designers</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Quickly create polished visuals for ads and social media. Save hours on tedious manual mask work.</p>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-xl bg-white ambient-shadow h-full flex flex-col">
+<div class="h-48 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBEhbqPZkQP-DgXd3J0vC5lRvwwiJcIC3bBmBOI26ENNxo9fyS1oD-VZ0DEKaTHslqe-Dn7CYckh7_Q9gaXYFMWFp1HCyxWvfDqeS8mE6fjFJeM-7ICrfh95j9H2dd57OUBxPb-DnaacbLivxHO8_LPAecKSRSgYHYef9owO2XS8FSex0pn5f1K3YgcjjiAbwFlHd3PVMGjDAaKzDPwfqcLT2GTkg8Dmf99yU1a4vz6icB5YkolugiiG-jgimt47K3Z4xWP0dY_vC8Q')"></div>
+<div class="p-md">
+<h4 class="font-headline-h3 text-headline-h3 mb-xs">Agencies</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Streamline client projects with fast, accurate edits – even for high volume catalogs.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Developer API -->
+<section class="py-xl bg-on-background text-white overflow-hidden">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
+<div class="space-y-md">
+<div class="inline-block px-sm py-xs bg-primary-container/20 text-primary-fixed-dim rounded-full font-label-md text-label-md mb-base">Developer-First</div>
+<h2 class="font-headline-h2 text-headline-h2">Developer-Friendly API</h2>
+<p class="font-body-lg text-body-lg text-white/70">
+                    REST API, SDKs for Python and JavaScript, plus webhook support. Automate your image pipeline with just a few lines of code.
+                </p>
+<button class="bg-primary-container text-on-secondary px-xl py-md rounded-xl font-label-md text-label-md flex items-center gap-xs hover:opacity-90 transition-all">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+                    View API Docs
+                </button>
+</div>
+<div class="bg-[#1e293b] rounded-xl p-md border border-white/10 shadow-2xl font-mono text-sm overflow-x-auto">
+<div class="flex gap-xs mb-md">
+<div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+<div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+<div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+</div>
+<pre class="text-blue-300"><code>curl -H 'X-API-Key: YOUR_KEY' \
+  -F 'image_file=@image.jpg' \
+  -F 'size=auto' \
+  https://api.cutmage.com/v1.0/removebg</code></pre>
+<div class="mt-md text-green-400">// Output: transparent-cutout.png (2.4MB)</div>
+</div>
+</div>
+</section>
+<!-- Pricing -->
+<section class="py-xl px-gutter max-w-container-max mx-auto">
+<div class="text-center mb-xl">
+<h2 class="font-headline-h2 text-headline-h2 mb-sm">Simple Credit-Based Pricing</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Pay only for what you use. No hidden fees.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="p-lg bg-white rounded-xl border border-outline-variant/30 flex flex-col hover:active-shadow transition-all">
+<h3 class="font-headline-h3 text-headline-h3 mb-xs">Free</h3>
+<div class="flex items-baseline gap-xs mb-md">
+<span class="text-4xl font-bold">$0</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">Includes 5 free credits for HD downloads each month. Great for quick edits.</p>
+<div class="mt-auto">
+<button class="w-full py-sm border border-primary text-primary rounded-lg font-label-md hover:bg-primary-container/5 transition-all">Get Started</button>
+</div>
+</div>
+<div class="p-lg bg-white rounded-xl border-2 border-primary-container flex flex-col relative active-shadow">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-container text-on-secondary px-md py-xs rounded-full font-label-md text-label-md">Recommended</div>
+<h3 class="font-headline-h3 text-headline-h3 mb-xs">Pro</h3>
+<div class="flex items-baseline gap-xs mb-md">
+<span class="text-4xl font-bold">$9</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">100 credits/month. Full HD output, API access, priority processing.</p>
+<div class="mt-auto">
+<button class="w-full py-sm bg-primary-container text-on-secondary rounded-lg font-label-md hover:opacity-90 transition-all">Subscribe Now</button>
+</div>
+</div>
+<div class="p-lg bg-white rounded-xl border border-outline-variant/30 flex flex-col hover:active-shadow transition-all">
+<h3 class="font-headline-h3 text-headline-h3 mb-xs">Scale</h3>
+<div class="flex items-baseline gap-xs mb-md">
+<span class="text-4xl font-bold">$29</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">500 credits/month. Priority support, batch tools, and custom workflows.</p>
+<div class="mt-auto">
+<button class="w-full py-sm border border-primary text-primary rounded-lg font-label-md hover:bg-primary-container/5 transition-all">Contact Sales</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-xl bg-surface-container-low/30">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="space-y-sm">
+<div class="flex text-tertiary-container">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg italic text-on-surface">"Cutmage has completely transformed our product catalog workflow. Minutes, not hours."</p>
+<div>
+<p class="font-label-md text-label-md font-bold">Jane D.</p>
+<p class="font-caption text-caption text-on-surface-variant">E-commerce Manager</p>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex text-tertiary-container">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg italic text-on-surface">"The hair detail preservation is unmatched. The first tool I've trusted with complex edges."</p>
+<div>
+<p class="font-label-md text-label-md font-bold">Mark S.</p>
+<p class="font-caption text-caption text-on-surface-variant">Freelance Designer</p>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex text-tertiary-container">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg italic text-on-surface">"The API integration was seamless and handles our high-volume needs without breaking a sweat."</p>
+<div>
+<p class="font-label-md text-label-md font-bold">Priya R.</p>
+<p class="font-caption text-caption text-on-surface-variant">Photographer</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="w-full py-xl bg-surface border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg px-gutter max-w-container-max mx-auto">
+<div class="space-y-md">
+<span class="text-headline-h3 font-headline-h3 font-bold text-on-surface">Cutmage</span>
+<p class="font-caption text-caption text-on-surface-variant">© 2024 Cutmage AI. Surgical Clarity for the Modern Web.</p>
+<div class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">language</span>
+<span class="font-label-md text-label-md">English (US)</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</div>
+</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold mb-md text-on-surface">Product</h4>
+<ul class="space-y-sm">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all underline decoration-transparent hover:decoration-primary" href="#">Background Removal</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all underline decoration-transparent hover:decoration-primary" href="#">API Documentation</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all underline decoration-transparent hover:decoration-primary" href="#">Pricing Plans</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold mb-md text-on-surface">Support</h4>
+<ul class="space-y-sm">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all underline decoration-transparent hover:decoration-primary" href="#">Help Center</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all underline decoration-transparent hover:decoration-primary" href="#">Terms of Service</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all underline decoration-transparent hover:decoration-primary" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md font-bold mb-md text-on-surface">Company</h4>
+<ul class="space-y-sm">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all underline decoration-transparent hover:decoration-primary" href="#">About Us</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all underline decoration-transparent hover:decoration-primary" href="#">Blog</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all underline decoration-transparent hover:decoration-primary" href="#">Careers</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

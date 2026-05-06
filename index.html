@@ -154,7 +154,7 @@
 <!-- ═══ FONTS ══════════════════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Manrope:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Manrope:wght@400;500;600&family=Newsreader:ital,wght@0,400;1,400;1,700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 
 <!-- ═══ TAILWIND ════════════════════════════════════════════════════════ -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -293,14 +293,39 @@ tailwind.config = {
   --head:'Inter',system-ui,sans-serif;
 }
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;min-height:100vh}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;min-height:100vh;word-break:break-word;overflow-wrap:break-word}
 
 /* ── TOOL CARD ── */
 .tool-wrap{max-width:900px;margin:0 auto;padding:20px 24px 52px}
 .tool-card{background:#fff;border:1px solid var(--border);border-radius:1rem;box-shadow:var(--sh2);overflow:hidden}
 .drop-zone{position:relative;padding:56px 32px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;border-bottom:1px solid var(--border);background:var(--border-l);cursor:pointer;transition:background .2s;overflow:hidden;min-height:240px}
-.drop-zone::before{content:'';position:absolute;inset:10px;border:2px dashed var(--border);border-radius:12px;pointer-events:none;transition:border-color .25s}
-.drop-zone:hover::before,.drop-zone.dg::before{border-color:var(--primary-c)}
+.drop-zone::before{
+  content:'';position:absolute;inset:10px;border-radius:12px;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg,var(--border),var(--border) 8px,transparent 8px,transparent 16px),
+    repeating-linear-gradient(90deg,var(--border),var(--border) 8px,transparent 8px,transparent 16px),
+    repeating-linear-gradient(180deg,var(--border),var(--border) 8px,transparent 8px,transparent 16px),
+    repeating-linear-gradient(270deg,var(--border),var(--border) 8px,transparent 8px,transparent 16px);
+  background-size:2px 100%,100% 2px,2px 100%,100% 2px;
+  background-position:0 0,0 0,100% 0,0 100%;
+  background-repeat:no-repeat
+}
+.drop-zone:hover::before,.drop-zone.dg::before{
+  background-image:
+    repeating-linear-gradient(0deg,var(--primary-c),var(--primary-c) 8px,transparent 8px,transparent 16px),
+    repeating-linear-gradient(90deg,var(--primary-c),var(--primary-c) 8px,transparent 8px,transparent 16px),
+    repeating-linear-gradient(180deg,var(--primary-c),var(--primary-c) 8px,transparent 8px,transparent 16px),
+    repeating-linear-gradient(270deg,var(--primary-c),var(--primary-c) 8px,transparent 8px,transparent 16px);
+  animation:marchAnts .8s linear infinite
+}
+.drop-zone.drop-error{animation:dzShake .4s ease both}
+.drop-zone.drop-error::before{
+  background-image:
+    repeating-linear-gradient(0deg,#ef4444,#ef4444 8px,transparent 8px,transparent 16px),
+    repeating-linear-gradient(90deg,#ef4444,#ef4444 8px,transparent 8px,transparent 16px),
+    repeating-linear-gradient(180deg,#ef4444,#ef4444 8px,transparent 8px,transparent 16px),
+    repeating-linear-gradient(270deg,#ef4444,#ef4444 8px,transparent 8px,transparent 16px)
+}
 .drop-zone:hover,.drop-zone.dg{background:#e5eeff}
 .drop-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:2;width:100%;height:100%}
 .up-icon{width:68px;height:68px;border-radius:16px;background:#fff;border:1px solid var(--border);box-shadow:var(--sh1);display:flex;align-items:center;justify-content:center;transition:transform .25s,box-shadow .25s;flex-shrink:0}
@@ -311,7 +336,10 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 .dz-s strong{color:var(--primary-c);font-weight:600}
 .fmt-chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
 .fc{padding:4px 12px;border-radius:50px;border:1px solid var(--border);font-size:11px;font-weight:600;color:var(--subtle);background:#fff}
-.tool-foot{padding:16px 22px;display:flex;align-items:center;gap:10px;background:#fff}
+.tool-foot{padding:14px 22px 16px;display:flex;flex-direction:column;gap:10px;background:#fff}
+.tool-foot-row{display:flex;align-items:center;gap:10px}
+.trust-chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.tc{font-size:11px;font-weight:700;color:var(--primary-c);padding:5px 11px;background:rgba(0,154,246,.06);border-radius:50px;border:1px solid rgba(0,154,246,.18);letter-spacing:.01em}
 .btn-main{flex:1;padding:13px 22px;background:var(--primary-c);color:#fff;border:none;border-radius:var(--r2);font-family:var(--head);font-size:15px;font-weight:600;cursor:pointer;position:relative;overflow:hidden;transition:all .2s}
 .btn-main:not(:disabled):hover{opacity:.9;transform:translateY(-1px);box-shadow:0 5px 20px rgba(0,154,246,.3)}
 .btn-main:disabled{background:#bfc7d4;cursor:not-allowed}
@@ -429,9 +457,10 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 .cat-tab.active{background:var(--primary-c);color:#fff}
 .cat-tab:not(.active){color:var(--muted);background:transparent}
 .cat-tab:not(.active):hover{background:var(--border-l)}
-/* ── MOBILE-FIRST LAYOUT ─────────────────────────────────────────── */
-/* On mobile: tool appears first (before hero) */
+/* ── MOBILE  (< 768px) ──────────────────────────────────────────────── */
 @media(max-width:767px){
+
+  /* ① Section order: tool first, hero content second */
   main{display:flex;flex-direction:column}
   #tool{order:1;padding-top:0 !important;margin-bottom:0}
   #hero-section{order:2}
@@ -440,75 +469,191 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
   #benefits-section{order:5}
   #usecases-section{order:6}
   #api{order:7}
-  #testimonials-section{order:8}
+  #built-for-section{order:8}
   #faq{order:9}
   footer{order:10}
-}
 
-/* ── MOBILE TYPOGRAPHY & SPACING ────────────────────────────────── */
-@media(max-width:767px){
-  /* font scale-down */
-  .font-display-lg,.text-display-lg,[class*="display-lg"]{font-size:2rem !important;line-height:1.2 !important;letter-spacing:-.02em !important}
-  .font-headline-h1,.text-headline-h1{font-size:1.75rem !important}
-  .font-headline-h2,.text-headline-h2{font-size:1.5rem !important}
-  .font-body-lg,.text-body-lg{font-size:1rem !important}
-  /* reduce section vertical padding */
+  /* ② Typography — smooth clamp() from 375 → 767px */
+  .font-display-lg,.text-display-lg,[class*="display-lg"]{
+    font-size:clamp(1.8rem,7.5vw,2.5rem) !important;
+    line-height:1.15 !important;
+    letter-spacing:-.02em !important
+  }
+  .font-headline-h1,.text-headline-h1{
+    font-size:clamp(1.5rem,6vw,2rem) !important;
+    line-height:1.2 !important
+  }
+  .font-headline-h2,.text-headline-h2{
+    font-size:clamp(1.2rem,5.5vw,1.6rem) !important;
+    line-height:1.3 !important
+  }
+  .font-headline-h3,.text-headline-h3{
+    font-size:clamp(0.95rem,4vw,1.2rem) !important
+  }
+  .font-body-lg,.text-body-lg{
+    font-size:clamp(0.875rem,3.5vw,1rem) !important;
+    line-height:1.65 !important
+  }
+
+  /* ③ Section spacing */
   .py-xl{padding-top:2.5rem !important;padding-bottom:2.5rem !important}
   .pt-xl{padding-top:2.5rem !important}
   .pb-20{padding-bottom:1.5rem !important}
-  /* gutter */
-  .px-gutter{padding-left:1rem !important;padding-right:1rem !important}
-  .px-margin-edge{padding-left:1rem !important;padding-right:1rem !important}
-  /* hero */
-  #hero-section{padding-top:2rem !important;padding-bottom:1.5rem !important}
-  #hero-section .gap-xl{gap:1.5rem !important}
-  #hero-section .space-y-md > *+*{margin-top:1rem !important}
-  /* hero cta row */
+  .px-gutter,.px-margin-edge{padding-left:1rem !important;padding-right:1rem !important}
+
+  /* ④ Hero: hide comparison slider, reduce padding */
+  #hero-section{padding-top:1.5rem !important;padding-bottom:1rem !important}
+  #hero-section .grid{gap:1rem !important}
+  #hero-section .grid > div:nth-child(2){display:none !important}
+  #hero-section .space-y-md > *+*{margin-top:0.875rem !important}
   #hero-section .flex.gap-sm{flex-direction:column !important}
-  /* social proof */
-  #hero-section .gap-xl.opacity-40{gap:1.5rem !important;flex-wrap:wrap !important}
-  /* slider */
-  #hero-slider{aspect-ratio:1/1 !important}
-  /* tool wrap */
-  .tool-wrap{padding:12px 12px 28px !important}
-  .drop-zone{padding:32px 16px !important;min-height:180px !important}
-  .dz-h{font-size:16px !important}
-  /* editor */
+  #hero-section .space-y-md{text-align:center}
+  #hero-section .flex.flex-col.gap-md{align-items:center}
+  #hero-section .flex.gap-sm > a{width:100%;justify-content:center}
+
+  /* ⑤ Upload tool — 52px min touch targets */
+  .tool-wrap{padding:16px 16px 32px !important}
+  .drop-zone{padding:36px 20px !important;min-height:220px !important;gap:14px !important}
+  .dz-h{font-size:clamp(15px,4vw,18px) !important}
+  .dz-s{font-size:13px !important}
+  .btn-main{padding:16px 22px !important;font-size:16px !important;min-height:52px !important}
+  .btn-ghost{padding:14px 12px !important;min-height:52px !important}
+  .tool-foot{padding:14px 16px !important;gap:8px !important}
+
+  /* ⑥ Editor: single column */
   .ed-layout{grid-template-columns:1fr !important}
   #editor{padding:0 12px 32px !important}
-  /* about/SEO block: single column */
+
+  /* ⑦ About: override inline-style two-column grid */
   #about [style*="grid-template-columns:1fr 1fr"],
   #about [style*="grid-template-columns: 1fr 1fr"]{display:block !important}
   #about [style*="grid-template-columns:1fr 1fr"] > *,
   #about [style*="grid-template-columns: 1fr 1fr"] > *{margin-bottom:2rem}
   #about{padding:2.5rem 1rem !important}
   #about [style*="max-width:900px"]{padding:0 !important}
-  /* demo */
-  #demo .grid{grid-template-columns:1fr !important}
-  /* benefits */
-  #benefits-section .grid{grid-template-columns:1fr 1fr !important}
-  /* use cases */
-  #usecases-section .grid{grid-template-columns:1fr !important}
-  /* api */
-  #api .grid{grid-template-columns:1fr !important}
+
+  /* ⑧ API: scrollable code block */
   #api pre{font-size:11px !important;overflow-x:auto !important}
-  /* testimonials */
-  #testimonials-section .grid{grid-template-columns:1fr !important}
-  /* faq */
-  #faq{padding-left:1rem !important;padding-right:1rem !important}
-  .faq-q{font-size:15px !important;padding:14px 0 !important}
-  /* footer */
-  footer .grid{grid-template-columns:1fr !important}
-  footer .gap-lg{gap:1.5rem !important}
-  /* nav */
-  .nav-gap-lg{gap:1rem !important}
-  /* hide social proof logos on very small screens */
-  .trust-bar{display:none !important}
+  #api code{white-space:pre;word-break:normal !important;overflow-wrap:normal !important}
+
+  /* ⑨ FAQ: remove inline max-width, larger tap targets */
+  #faq{padding-left:1rem !important;padding-right:1rem !important;max-width:100% !important}
+  .faq-q{font-size:clamp(14px,4vw,16px) !important;padding:16px 0 !important;min-height:52px}
+
+  /* ⑩ Stats band: stack items */
+  .stats-band{flex-direction:column;align-items:center;gap:10px;padding:16px}
+}
+
+/* ── TABLET  (768px – 1023px) ────────────────────────────────────── */
+@media(min-width:768px) and (max-width:1023px){
+  .font-display-lg,.text-display-lg,[class*="display-lg"]{
+    font-size:clamp(2.25rem,5vw,3.5rem) !important
+  }
+  .font-headline-h2,.text-headline-h2{
+    font-size:clamp(1.5rem,4vw,2rem) !important
+  }
+  #hero-section .grid{gap:2rem !important}
 }
 
 /* ── SMOOTH ANIMATION HELPERS ────────────────────────────────────── */
 .comparison-slider img{will-change:transform}
 canvas#net-canvas{will-change:auto}
+
+/* ── HERO BACKGROUND ────────────────────────────────────────────── */
+#hero-section{
+  background-color:#fafafa;
+  background-image:radial-gradient(circle,#d1d5db 1px,transparent 1px);
+  background-size:24px 24px
+}
+#hero-section::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 65% at 5% 25%,rgba(35,85,245,.07),transparent 80%),
+    radial-gradient(ellipse 45% 55% at 95% 15%,rgba(139,92,246,.07),transparent 80%)
+}
+
+/* ── HERO HEADLINE WORD ANIMATION ───────────────────────────────── */
+.hw{
+  display:inline-block;
+  opacity:0;
+  animation:hwRise .55s cubic-bezier(.16,1,.3,1) both
+}
+@keyframes hwRise{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:none}
+}
+
+/* ── DROP ZONE ANIMATIONS ───────────────────────────────────────── */
+@keyframes marchAnts{
+  0%{background-position:0 0,0 0,100% 0,0 100%}
+  100%{background-position:0 -16px,16px 0,100% 16px,-16px 100%}
+}
+@keyframes dzShake{
+  0%,100%{transform:none}
+  20%{transform:translateX(-6px)}
+  40%{transform:translateX(6px)}
+  60%{transform:translateX(-4px)}
+  80%{transform:translateX(4px)}
+}
+@keyframes iconBounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-7px)}
+}
+.drop-zone.dg .up-icon{animation:iconBounce .55s ease-in-out infinite}
+
+/* ── PROCESSING PROGRESS ────────────────────────────────────────── */
+.proc-prog-wrap{width:220px;height:4px;background:var(--border);border-radius:4px;overflow:hidden;margin:2px 0}
+.proc-prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--primary-c),#9bcbff);border-radius:4px;transition:width .08s linear}
+
+/* ── HAMBURGER MENU ─────────────────────────────────────────────── */
+.ham-line{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s cubic-bezier(.16,1,.3,1),opacity .2s ease}
+#hamburger{background:none;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;border-radius:8px;transition:background .2s}
+#hamburger:hover{background:var(--border-l)}
+#hamburger.open .ham-line:nth-child(1){transform:translateY(7px) rotate(45deg)}
+#hamburger.open .ham-line:nth-child(2){opacity:0;transform:scaleX(0)}
+#hamburger.open .ham-line:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#mobile-nav{max-height:0;transition:max-height .35s cubic-bezier(.16,1,.3,1);overflow:hidden;background:var(--bg);border-top:1px solid transparent}
+#mobile-nav.open{max-height:360px;border-top-color:var(--border)}
+.mobile-nav-link{display:flex;align-items:center;padding:0 var(--gutter,24px);min-height:52px;font-family:var(--head);font-size:16px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border-l);transition:color .2s,background .2s}
+.mobile-nav-link:last-of-type{border-bottom:none}
+.mobile-nav-link:hover,.mobile-nav-link:active{color:var(--primary-c);background:var(--border-l)}
+.mobile-nav-cta{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 16px 16px;padding:15px;background:var(--primary-c);color:#fff;border-radius:12px;font-family:var(--head);font-size:15px;font-weight:700;text-decoration:none;transition:opacity .2s}
+.mobile-nav-cta:active{opacity:.85}
+.mobile-nav-cta .material-symbols-outlined{font-size:18px}
+
+/* ── STATS BAND ─────────────────────────────────────────────────── */
+.stats-band{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 32px;padding:20px 24px}
+.stat-item{display:flex;align-items:center;gap:8px;font-family:var(--head);font-size:14px;font-weight:700;color:var(--ink)}
+.stat-item .material-symbols-outlined{font-size:18px;color:var(--primary-c)}
+
+/* ── BUILT FOR CARDS ────────────────────────────────────────────── */
+.built-for-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--sh1);transition:transform .2s,box-shadow .2s}
+.built-for-card:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+.built-for-icon{width:48px;height:48px;border-radius:12px;background:var(--border-l);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.built-for-icon .material-symbols-outlined{font-size:24px;color:var(--primary-c)}
+
+/* ── NAVBAR SCROLL COMPACT ──────────────────────────────────────── */
+#site-header{transition:box-shadow 300ms ease,border-color 300ms ease}
+#site-header > div{transition:height 300ms ease}
+#site-header.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08);border-bottom:1px solid var(--border)}
+#site-header.scrolled > div{height:48px !important}
+
+/* ── SCROLL PROGRESS BAR ─────────────────────────────────────────── */
+#nav-progress{position:fixed;top:0;left:0;height:3px;background:#2355f5;width:0%;z-index:9999;pointer-events:none;transition:width .12s linear}
+
+/* ── HOVER NONE — no stuck-hover on touch devices ──────────────── */
+@media(hover:none){
+  .built-for-card:hover{transform:none !important;box-shadow:var(--sh1) !important}
+  .btn-main:hover{opacity:1 !important;transform:none !important;box-shadow:none !important}
+  .btn-dl:hover{opacity:1 !important;transform:none !important;box-shadow:none !important}
+  .csw:hover{transform:none !important}
+  .gsw:hover{transform:none !important}
+  .drop-zone:hover .up-icon{transform:none !important;box-shadow:var(--sh1) !important}
+  .cat-tab:not(.active):hover{background:transparent !important}
+}
+
+/* ── RIPPLE ──────────────────────────────────────────────────────── */
+@keyframes rippleOut{to{width:200px;height:200px;opacity:0}}
 </style>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased">
@@ -516,10 +661,10 @@ canvas#net-canvas{will-change:auto}
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- NAV                                                                 -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<header class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm">
-  <div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-20 nav-gap-lg">
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm" id="site-header">
+  <div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto" style="height:60px">
     <div class="flex items-center gap-lg">
-      <a href="/" class="font-headline-h3 text-headline-h3 font-bold text-primary no-underline">Cutmage</a>
+      <a href="/" class="font-headline-h3 text-headline-h3 font-bold text-primary no-underline" style="font-size:20px">Cutmage</a>
       <nav class="hidden md:flex gap-md items-center">
         <a href="#tool" class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary hover:text-primary transition-colors duration-200 no-underline">Tool</a>
         <a href="#demo" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">Demo</a>
@@ -527,14 +672,41 @@ canvas#net-canvas{will-change:auto}
         <a href="#faq" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">FAQ</a>
       </nav>
     </div>
-    <a href="#tool" class="bg-primary-container text-on-secondary px-md py-sm rounded-xl font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all no-underline flex items-center gap-xs">
-      <span class="material-symbols-outlined text-[16px]">auto_fix_high</span>
-      <span>Remove Background</span>
+    <div class="flex items-center gap-sm">
+      <a href="#tool" class="hidden sm:flex bg-primary-container text-on-secondary px-md py-sm rounded-xl font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all no-underline items-center gap-xs">
+        <span class="material-symbols-outlined text-[16px]">auto_fix_high</span>
+        <span>Remove Background</span>
+      </a>
+      <!-- Hamburger — mobile only -->
+      <button id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav" class="md:hidden">
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile nav panel -->
+  <div id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="#tool" class="mobile-nav-link">
+      <span class="material-symbols-outlined" style="font-size:18px;margin-right:10px;color:var(--primary-c)">auto_fix_high</span>Remove Background
+    </a>
+    <a href="#demo" class="mobile-nav-link">
+      <span class="material-symbols-outlined" style="font-size:18px;margin-right:10px;color:var(--subtle)">compare</span>Demo
+    </a>
+    <a href="#api" class="mobile-nav-link">
+      <span class="material-symbols-outlined" style="font-size:18px;margin-right:10px;color:var(--subtle)">api</span>API
+    </a>
+    <a href="#faq" class="mobile-nav-link">
+      <span class="material-symbols-outlined" style="font-size:18px;margin-right:10px;color:var(--subtle)">help_outline</span>FAQ
+    </a>
+    <a href="#tool" class="mobile-nav-cta">
+      <span class="material-symbols-outlined">upload</span>Try Free — No Sign-Up
     </a>
   </div>
 </header>
+<div id="nav-progress" aria-hidden="true"></div>
 
-<main class="pt-20">
+<main style="padding-top:60px">
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- HERO                                                                -->
@@ -550,8 +722,9 @@ canvas#net-canvas{will-change:auto}
         <span class="material-symbols-outlined text-[18px]">verified</span>
         <span>AI-Powered Precision · 100% Free</span>
       </div>
-      <h1 class="font-display-lg text-display-lg text-on-background leading-tight">
-        Free AI <span class="text-primary-container">Background Remover</span> — Instant & Precise
+      <h1 class="text-on-background hero-headline" style="font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:clamp(40px,6vw,80px);line-height:1.1;font-weight:700;letter-spacing:-.025em">
+        <span class="hw">Remove</span> <span class="hw">Any</span> <span class="hw">Background.</span><br>
+        <span class="hw" style="color:#2355f5">Instantly</span> <span class="hw" style="color:#2355f5">Free.</span>
       </h1>
       <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
         Instantly remove backgrounds with pro-level accuracy. Our neural networks isolate complex subjects in 5 seconds or less — no sign-up, no watermark, free forever.
@@ -619,14 +792,18 @@ canvas#net-canvas{will-change:auto}
     </div>
   </div>
 
-  <!-- Social proof bar -->
-  <div class="trust-bar max-w-container-max mx-auto px-gutter mt-20 pt-lg border-t border-outline-variant/20">
-    <p class="font-label-md text-label-md text-center text-on-surface-variant mb-md uppercase tracking-widest opacity-60">Trusted by 2M+ creators worldwide</p>
-    <div class="flex flex-wrap justify-center items-center gap-xl opacity-40">
-      <span class="font-headline-h2 text-headline-h2 font-bold text-on-surface-variant">E-commerce</span>
-      <span class="font-headline-h2 text-headline-h2 font-bold text-on-surface-variant">Designers</span>
-      <span class="font-headline-h2 text-headline-h2 font-bold text-on-surface-variant">Agencies</span>
-      <span class="font-headline-h2 text-headline-h2 font-bold text-on-surface-variant">Photographers</span>
+  <!-- Real stats band -->
+  <div class="max-w-container-max mx-auto border-t border-outline-variant/20" style="margin-top:40px">
+    <div class="stats-band">
+      <div class="stat-item">
+        <span class="material-symbols-outlined">check_circle</span><span class="counter" data-target="500" data-suffix="+">500+</span> images processed today
+      </div>
+      <div class="stat-item">
+        <span class="material-symbols-outlined">bolt</span>&lt;&nbsp;<span class="counter" data-target="5">5</span> seconds average processing
+      </div>
+      <div class="stat-item">
+        <span class="material-symbols-outlined">all_inclusive</span>Free forever — no hidden limits
+      </div>
     </div>
   </div>
 </section>
@@ -653,10 +830,17 @@ canvas#net-canvas{will-change:auto}
     </div>
     <div class="prog-wrap" id="prog-wrap"><div class="prog-bar"></div></div>
     <div class="tool-foot">
-      <button class="btn-main" id="btn-go" disabled aria-label="Remove background">
-        <span class="material-symbols-outlined" style="font-size:18px;vertical-align:middle;margin-right:6px">auto_fix_high</span>Remove Background — Free
-      </button>
-      <button class="btn-ghost" id="btn-clear" style="display:none" aria-label="Clear">Clear</button>
+      <div class="tool-foot-row">
+        <button class="btn-main" id="btn-go" disabled aria-label="Remove background">
+          <span class="material-symbols-outlined" style="font-size:18px;vertical-align:middle;margin-right:6px">auto_fix_high</span>Remove Background — Free
+        </button>
+        <button class="btn-ghost" id="btn-clear" style="display:none" aria-label="Clear">Clear</button>
+      </div>
+      <div class="trust-chips">
+        <span class="tc">✓ No Watermark</span>
+        <span class="tc">✓ Instant Results</span>
+        <span class="tc">✓ Free Forever</span>
+      </div>
     </div>
   </div>
 </section>
@@ -673,8 +857,9 @@ canvas#net-canvas{will-change:auto}
 <div id="proc" aria-live="polite">
   <div class="proc-card">
     <div class="proc-spin" aria-hidden="true"></div>
-    <div class="proc-h">Removing background…</div>
-    <div class="proc-s">AI is precisely tracing your subject</div>
+    <div class="proc-prog-wrap"><div class="proc-prog-fill" id="proc-pb"></div></div>
+    <div class="proc-h" id="proc-status">🔍 Detecting subject…</div>
+    <div class="proc-s" id="proc-pct">0%</div>
     <div class="proc-pills">
       <div class="pp" id="pp1">🔍 Detecting subject</div>
       <div class="pp" id="pp2">✂️ Removing background</div>
@@ -833,11 +1018,6 @@ canvas#net-canvas{will-change:auto}
       </div>
     </div>
 
-    <div style="margin-top:32px;padding:20px 24px;border-radius:12px;background:linear-gradient(135deg,rgba(0,154,246,.06),rgba(0,98,159,.08));border:1px solid rgba(0,154,246,.15)">
-      <p style="font-family:var(--sans);font-size:14px;color:var(--muted);line-height:1.7;margin:0">
-        <strong style="color:var(--ink)">Free background remover tools by Cutmage:</strong> background eraser online · remove bg free · photo background remover · image background remover · remove background from picture · background cutter · cut out photo background · free transparent background tool · AI photo cutout · background remover without watermark · remove background online free no signup · free background removal tool
-      </p>
-    </div>
   </div>
 </article>
 
@@ -1008,50 +1188,35 @@ canvas#net-canvas{will-change:auto}
 
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- TESTIMONIALS                                                        -->
+<!-- BUILT FOR                                                           -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section id="testimonials-section" class="py-xl bg-surface-container-low/30 rev">
-  <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-3 gap-lg">
-    <div class="space-y-sm">
-      <div class="flex text-tertiary-container">
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-      </div>
-      <p class="font-body-lg text-body-lg italic text-on-surface">"Cutmage has completely transformed our product catalog workflow. Minutes, not hours. The hair detail is unreal."</p>
-      <div>
-        <p class="font-label-md text-label-md font-bold">Jane D.</p>
-        <p class="font-caption text-caption text-on-surface-variant">E-commerce Manager</p>
-      </div>
+<section id="built-for-section" class="py-xl bg-surface-container-low/30 rev">
+  <div class="max-w-container-max mx-auto px-gutter">
+    <div class="text-center mb-lg">
+      <h2 class="font-headline-h2 text-headline-h2 text-on-background mb-sm">Built for Every Creator</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Whether you're selling products, editing photos, or building an image pipeline — Cutmage handles it all, free.</p>
     </div>
-    <div class="space-y-sm">
-      <div class="flex text-tertiary-container">
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+      <div class="built-for-card">
+        <div class="built-for-icon">
+          <span class="material-symbols-outlined">shopping_bag</span>
+        </div>
+        <h3 class="font-headline-h3 text-headline-h3 text-on-background">E-Commerce Sellers</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Remove backgrounds from product photos in seconds. Get marketplace-ready images for your store instantly.</p>
       </div>
-      <p class="font-body-lg text-body-lg italic text-on-surface">"The hair detail preservation is unmatched. The first tool I've trusted with complex edges. And it's completely free."</p>
-      <div>
-        <p class="font-label-md text-label-md font-bold">Mark S.</p>
-        <p class="font-caption text-caption text-on-surface-variant">Freelance Designer</p>
+      <div class="built-for-card">
+        <div class="built-for-icon">
+          <span class="material-symbols-outlined">photo_camera</span>
+        </div>
+        <h3 class="font-headline-h3 text-headline-h3 text-on-background">Photographers &amp; Designers</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Cut out subjects with pixel-perfect precision. Complex hair, fur, and transparent edges handled automatically.</p>
       </div>
-    </div>
-    <div class="space-y-sm">
-      <div class="flex text-tertiary-container">
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
-      </div>
-      <p class="font-body-lg text-body-lg italic text-on-surface">"The API integration was seamless and handles our high-volume needs without breaking a sweat. Incredible tool."</p>
-      <div>
-        <p class="font-label-md text-label-md font-bold">Priya R.</p>
-        <p class="font-caption text-caption text-on-surface-variant">Photographer</p>
+      <div class="built-for-card">
+        <div class="built-for-icon">
+          <span class="material-symbols-outlined">code</span>
+        </div>
+        <h3 class="font-headline-h3 text-headline-h3 text-on-background">Developers &amp; Teams</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Automate your image pipeline with our REST API. Process thousands of images programmatically at scale.</p>
       </div>
     </div>
   </div>
@@ -1618,9 +1783,23 @@ function handleFile(f) {
 
 document.getElementById('fi').addEventListener('change', e => handleFile(e.target.files[0]));
 const dzEl = document.getElementById('dz');
-dzEl.addEventListener('dragover', e => { e.preventDefault(); dzEl.classList.add('dg'); });
-dzEl.addEventListener('dragleave', () => dzEl.classList.remove('dg'));
-dzEl.addEventListener('drop', e => { e.preventDefault(); dzEl.classList.remove('dg'); handleFile(e.dataTransfer.files[0]); });
+const dzH  = dzEl.querySelector('.dz-h');
+const DZ_DEFAULT_TEXT = dzH ? dzH.textContent : '';
+dzEl.addEventListener('dragover', e => {
+  e.preventDefault();
+  dzEl.classList.add('dg');
+  if (dzH) dzH.textContent = 'Drop it!';
+});
+dzEl.addEventListener('dragleave', () => {
+  dzEl.classList.remove('dg');
+  if (dzH && dzH.textContent === 'Drop it!') dzH.textContent = DZ_DEFAULT_TEXT;
+});
+dzEl.addEventListener('drop', e => {
+  e.preventDefault();
+  dzEl.classList.remove('dg');
+  if (dzH && dzH.textContent === 'Drop it!') dzH.textContent = DZ_DEFAULT_TEXT;
+  handleFile(e.dataTransfer.files[0]);
+});
 document.addEventListener('paste', e => {
   const item = [...(e.clipboardData?.items||[])].find(i => i.type.startsWith('image/'));
   if (item) handleFile(item.getAsFile());
@@ -1653,9 +1832,52 @@ document.getElementById('btn-new').addEventListener('click', reset);
 // PROCESS
 // ═══════════════════════════════════════════════════════
 let stepTimers = [];
+let procRaf = null, procCycleId = null;
+
+const PROC_STEPS = [
+  '🔍 Detecting subject…',
+  '✂️ Removing background…',
+  '✨ Refining edges…',
+  '✅ Done!'
+];
+
+function stopProcAnim() {
+  if (procRaf) { cancelAnimationFrame(procRaf); procRaf = null; }
+  if (procCycleId) { clearInterval(procCycleId); procCycleId = null; }
+}
+
 function animSteps() {
+  const statusEl = document.getElementById('proc-status');
+  const pctEl    = document.getElementById('proc-pct');
+  const pbEl     = document.getElementById('proc-pb');
+
   ['pp1','pp2','pp3'].forEach(id => document.getElementById(id).classList.remove('done'));
   stepTimers.forEach(clearTimeout);
+  stopProcAnim();
+
+  // Progress bar: 0 → 100% over 2.5s
+  const t0 = Date.now();
+  if (pbEl)  pbEl.style.width = '0%';
+  if (pctEl) pctEl.textContent = '0%';
+  function tick() {
+    const pct = Math.min(100, ((Date.now() - t0) / 2500) * 100);
+    if (pbEl)  pbEl.style.width  = pct + '%';
+    if (pctEl) pctEl.textContent = Math.round(pct) + '%';
+    if (pct < 100) procRaf = requestAnimationFrame(tick);
+    else procRaf = null;
+  }
+  procRaf = requestAnimationFrame(tick);
+
+  // Cycling status text every 700ms
+  let step = 0;
+  if (statusEl) statusEl.textContent = PROC_STEPS[0];
+  procCycleId = setInterval(() => {
+    step = Math.min(step + 1, PROC_STEPS.length - 1);
+    if (statusEl) statusEl.textContent = PROC_STEPS[step];
+    if (step === PROC_STEPS.length - 1) { clearInterval(procCycleId); procCycleId = null; }
+  }, 700);
+
+  // Pills
   stepTimers = [
     setTimeout(() => document.getElementById('pp1').classList.add('done'), 800),
     setTimeout(() => document.getElementById('pp2').classList.add('done'), 2100),
@@ -1797,6 +2019,92 @@ const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold:.07 });
 document.querySelectorAll('.rev').forEach(el => io.observe(el));
+
+// ═══════════════════════════════════════════════════════
+// NAVBAR SCROLL — compact mode + progress bar
+// ═══════════════════════════════════════════════════════
+(function(){
+  const header   = document.getElementById('site-header');
+  const progress = document.getElementById('nav-progress');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+    if(progress){
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = max > 0 ? (window.scrollY / max * 100) + '%' : '0%';
+    }
+  }, {passive:true});
+})();
+
+// ═══════════════════════════════════════════════════════
+// BUTTON RIPPLE EFFECT
+// ═══════════════════════════════════════════════════════
+(function(){
+  function addRipple(btn){
+    btn.addEventListener('click', function(e){
+      const rc = btn.getBoundingClientRect();
+      const r  = document.createElement('span');
+      r.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,.35);pointer-events:none;`
+        + `left:${e.clientX - rc.left}px;top:${e.clientY - rc.top}px;`
+        + `width:0;height:0;transform:translate(-50%,-50%);animation:rippleOut .5s ease-out both`;
+      btn.appendChild(r);
+      setTimeout(() => r.remove(), 550);
+    });
+  }
+  document.querySelectorAll('.btn-main, .btn-dl.primary, .mobile-nav-cta').forEach(addRipple);
+})();
+
+// ═══════════════════════════════════════════════════════
+// NUMBER COUNTERS — count up on scroll-into-view
+// ═══════════════════════════════════════════════════════
+(function(){
+  function easeOutQuart(t){ return 1 - Math.pow(1-t, 4); }
+  const cIO = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      const el     = entry.target;
+      const target = +el.dataset.target;
+      const suffix = el.dataset.suffix || '';
+      const t0     = performance.now();
+      function tick(now){
+        const t = Math.min((now - t0) / 1500, 1);
+        el.textContent = Math.round(easeOutQuart(t) * target) + suffix;
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      cIO.unobserve(el);
+    });
+  }, {threshold:0.5});
+  document.querySelectorAll('.counter').forEach(el => cIO.observe(el));
+})();
+
+// ═══════════════════════════════════════════════════════
+// HAMBURGER MENU
+// ═══════════════════════════════════════════════════════
+(function(){
+  const btn = document.getElementById('hamburger');
+  const nav = document.getElementById('mobile-nav');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', () => {
+    const open = btn.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    nav.classList.toggle('open', open);
+  });
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+    });
+  });
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (!btn.contains(e.target) && !nav.contains(e.target)) {
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+    }
+  });
+})();
 </script>
 </body>
 </html>

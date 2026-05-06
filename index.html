@@ -542,6 +542,9 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 
   /* ⑩ Stats band: stack items */
   .stats-band{flex-direction:column;align-items:center;gap:10px;padding:16px}
+
+  /* ⑪ Keep proc + editor with the tool (not floating to top) */
+  #proc,#editor{order:1}
 }
 
 /* ── TABLET  (768px – 1023px) ────────────────────────────────────── */
@@ -654,6 +657,12 @@ canvas#net-canvas{will-change:auto}
 
 /* ── RIPPLE ──────────────────────────────────────────────────────── */
 @keyframes rippleOut{to{width:200px;height:200px;opacity:0}}
+
+/* ── DROP ZONE PREVIEW IMAGE ────────────────────────────────────── */
+#dz-preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px;display:none;pointer-events:none;z-index:0}
+/* keep drop zone content above the preview */
+.drop-zone .up-icon,.drop-zone .dz-h,.drop-zone .dz-s,.drop-zone .fmt-chips{position:relative;z-index:1}
+.fnb{position:relative;z-index:2!important}
 </style>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased">
@@ -819,13 +828,14 @@ canvas#net-canvas{will-change:auto}
   <div class="tool-card">
     <div class="drop-zone" id="dz" role="button" aria-label="Upload an image to remove its background">
       <input type="file" id="fi" accept="image/jpeg,image/png,image/webp" aria-label="Choose image file"/>
+      <img id="dz-preview" alt="Selected image preview"/>
       <div class="up-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
       </div>
       <div class="dz-h">Drop your image here to remove background</div>
       <div class="dz-s">or <strong>click to browse</strong> — Ctrl+V paste from clipboard works too</div>
       <div class="fmt-chips">
-        <span class="fc">JPEG</span><span class="fc">PNG</span><span class="fc">WebP</span><span class="fc">Up to 10 MB</span><span class="fc">No sign-up</span>
+        <span class="fc">JPEG</span><span class="fc">PNG</span><span class="fc">WebP</span><span class="fc">Up to 10 MB</span>
       </div>
     </div>
     <div class="prog-wrap" id="prog-wrap"><div class="prog-bar"></div></div>
@@ -1764,9 +1774,8 @@ function handleFile(f) {
   if (f.size > 10*1024*1024) { showErr('File exceeds 10 MB. Please compress the image first.'); return; }
   selFile = f; resBlob = null; origUrl = URL.createObjectURL(f);
   const dz = document.getElementById('dz');
-  dz.style.backgroundImage = `url(${origUrl})`;
-  dz.style.backgroundSize = 'cover';
-  dz.style.backgroundPosition = 'center';
+  const dzPrev = document.getElementById('dz-preview');
+  if(dzPrev){ dzPrev.src = origUrl; dzPrev.style.display = 'block'; }
   dz.querySelectorAll('.up-icon,.dz-h,.dz-s,.fmt-chips').forEach(el => el.style.opacity = '0');
   let nb = dz.querySelector('.fnb');
   if (!nb) {
@@ -1813,7 +1822,8 @@ function reset() {
   document.getElementById('fi').value = '';
   document.getElementById('bg-fi').value = '';
   const dz = document.getElementById('dz');
-  dz.style.backgroundImage = '';
+  const dzPrev = document.getElementById('dz-preview');
+  if(dzPrev){ dzPrev.src = ''; dzPrev.style.display = 'none'; }
   dz.querySelectorAll('.up-icon,.dz-h,.dz-s,.fmt-chips').forEach(el => el.style.opacity = '1');
   const nb = dz.querySelector('.fnb'); if (nb) nb.remove();
   document.getElementById('btn-go').disabled = true;
@@ -1911,13 +1921,18 @@ document.getElementById('btn-go').addEventListener('click', async () => {
     if (!res.ok) { const e = await res.json().catch(()=>({detail:res.statusText})); throw new Error(e.detail||`Error ${res.status}`); }
     resBlob = await res.blob();
     const rUrl = URL.createObjectURL(resBlob);
-    resultImg = new Image(); resultImg.src = rUrl;
-    await new Promise(r => resultImg.onload = r);
-    document.getElementById('ba-after').src = rUrl;
-    document.getElementById('ba-orig').src  = origUrl;
+    resultImg = new Image();
+    await new Promise(resolve => {
+      resultImg.onload  = resolve;
+      resultImg.onerror = resolve;
+      resultImg.src = rUrl;
+      if(resultImg.complete) resolve();
+    });
+    const baAfterEl = document.getElementById('ba-after');
+    const baOrigEl  = document.getElementById('ba-orig');
     await Promise.all([
-      new Promise(r => document.getElementById('ba-after').onload = r),
-      new Promise(r => document.getElementById('ba-orig').onload  = r),
+      new Promise(r => { baAfterEl.onload = r; baAfterEl.onerror = r; baAfterEl.src = rUrl;    if(baAfterEl.complete)  r(); }),
+      new Promise(r => { baOrigEl.onload  = r; baOrigEl.onerror  = r; baOrigEl.src  = origUrl; if(baOrigEl.complete)   r(); }),
     ]);
     document.getElementById('m-name').textContent = selFile.name.length>20 ? selFile.name.slice(0,18)+'…' : selFile.name;
     document.getElementById('m-size').textContent = fmtB(selFile.size);
@@ -1928,6 +1943,7 @@ document.getElementById('btn-go').addEventListener('click', async () => {
     document.querySelectorAll('.csw').forEach(s => s.classList.remove('sel'));
     document.querySelector('.csw-trans').classList.add('sel');
     renderComposite(document.getElementById('prev-canvas'), true);
+    stopProcAnim();
     document.getElementById('proc').classList.remove('on');
     document.getElementById('prog-wrap').classList.remove('on');
     document.getElementById('btn-go').disabled = false;

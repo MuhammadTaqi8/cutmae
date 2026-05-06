@@ -4,7 +4,7 @@
 <!-- ═══════════════════════════ PRIMARY SEO ═══════════════════════════ -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Cutmage — Free AI Background Remover & Background Changer Online | No Sign-Up</title>
+<title>Cutmage — Free AI Background Remover Online | No Watermark, No Sign-Up</title>
 <meta name="description" content="Cutmage is a free AI background remover. Remove background from any image in seconds — no watermark, no sign-up, no limits. Replace with color, gradient, or your own photo. Works on portraits, products, pets & more."/>
 <meta name="keywords" content="background remover, remove background from image, free background remover, AI background remover, transparent background, remove bg, background changer, photo background editor, online background remover, cut out image, remove background online free"/>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
@@ -51,57 +51,100 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "WebApplication",
+      "@type": "WebPage",
+      "@id": "https://cutmage.com/",
+      "url": "https://cutmage.com/",
+      "name": "Cutmage — Free AI Background Remover Online | No Watermark, No Sign-Up",
+      "description": "Cutmage is a free AI background remover. Remove background from any image in seconds — no watermark, no sign-up, no limits.",
+      "inLanguage": "en-US",
+      "dateModified": "2026-05-06",
+      "isPartOf": {"@id": "https://cutmage.com/#website"},
+      "about": {"@id": "https://cutmage.com/#app"},
+      "primaryImageOfPage": {"@type": "ImageObject", "url": "https://cutmage.com/og-image.png", "width": 1200, "height": 630}
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://cutmage.com/#website",
+      "url": "https://cutmage.com/",
+      "name": "Cutmage",
+      "description": "Free AI background remover — remove background from any image online instantly.",
+      "publisher": {"@id": "https://cutmage.com/#org"},
+      "potentialAction": {"@type": "SearchAction", "target": {"@type": "EntryPoint", "urlTemplate": "https://cutmage.com/?s={search_term_string}"}, "query-input": "required name=search_term_string"}
+    },
+    {
+      "@type": "SoftwareApplication",
       "@id": "https://cutmage.com/#app",
       "name": "Cutmage",
+      "alternateName": ["Background Remover", "Remove BG", "Background Eraser", "Transparent Background Maker"],
       "url": "https://cutmage.com/",
-      "description": "Free AI-powered background remover and changer. Remove backgrounds from images instantly online with no sign-up required.",
+      "description": "Free AI-powered background remover. Remove background from any image online in seconds with pixel-perfect precision — no sign-up, no watermark, no limits.",
       "applicationCategory": "MultimediaApplication",
+      "applicationSubCategory": "Photo Editing",
       "operatingSystem": "Any",
       "browserRequirements": "Requires a modern browser with JavaScript enabled",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-      "featureList": ["AI background removal","Background color replacement","Gradient backgrounds","Custom image backgrounds","Transparent PNG export","JPEG export","No watermark","No sign-up required","Free background remover","Batch processing via API"],
-      "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "2847", "bestRating": "5"}
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"},
+      "featureList": [
+        "AI background removal",
+        "Remove white background from image",
+        "Transparent PNG export",
+        "Background color replacement",
+        "Gradient background replacement",
+        "Custom photo background upload",
+        "JPEG export",
+        "No watermark",
+        "No sign-up required",
+        "Free background remover",
+        "Product photo background removal",
+        "Portrait background remover",
+        "Bulk background removal via API"
+      ],
+      "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "2847", "bestRating": "5", "worstRating": "1"},
+      "screenshot": {"@type": "ImageObject", "url": "https://cutmage.com/og-image.png"}
     },
     {
       "@type": "Organization",
       "@id": "https://cutmage.com/#org",
       "name": "Cutmage",
       "url": "https://cutmage.com/",
-      "logo": {"@type": "ImageObject", "url": "https://cutmage.com/og-image.png", "width": 1200, "height": 630},
+      "logo": {"@type": "ImageObject", "@id": "https://cutmage.com/#logo", "url": "https://cutmage.com/og-image.png", "width": 1200, "height": 630, "caption": "Cutmage"},
+      "image": {"@id": "https://cutmage.com/#logo"},
       "sameAs": ["https://twitter.com/cutmage"]
     },
     {
       "@type": "HowTo",
-      "name": "How to Remove a Background from an Image for Free",
-      "description": "Remove the background from any image in seconds using Cutmage's free AI background remover. No sign-up required.",
+      "@id": "https://cutmage.com/#howto",
+      "name": "How to Remove Background from Image Online for Free",
+      "description": "Remove background from any image in seconds using Cutmage's free AI background remover. No sign-up, no watermark required.",
       "totalTime": "PT30S",
       "estimatedCost": {"@type": "MonetaryAmount", "currency": "USD", "value": "0"},
+      "supply": [{"@type": "HowToSupply", "name": "An image file (JPEG, PNG, or WebP)"}],
+      "tool": [{"@type": "HowToTool", "name": "Cutmage free background remover", "url": "https://cutmage.com/"}],
       "step": [
-        {"@type": "HowToStep", "position": 1, "name": "Upload your image", "text": "Click the upload area or drag and drop your JPEG, PNG, or WebP image. No sign-up needed.", "url": "https://cutmage.com/#tool"},
-        {"@type": "HowToStep", "position": 2, "name": "AI removes the background", "text": "Cutmage's AI instantly analyses your image and removes the background with pixel-precise edges in under 5 seconds.", "url": "https://cutmage.com/#tool"},
-        {"@type": "HowToStep", "position": 3, "name": "Customise your background (optional)", "text": "Replace the background with a solid colour, gradient preset, or your own custom photo.", "url": "https://cutmage.com/#tool"},
-        {"@type": "HowToStep", "position": 4, "name": "Download free", "text": "Download your image as a transparent PNG or JPEG. Full resolution, no watermark, completely free.", "url": "https://cutmage.com/#tool"}
+        {"@type": "HowToStep", "position": 1, "name": "Upload your image", "text": "Go to Cutmage.com and drag and drop your image, click to browse, or paste from clipboard. JPEG, PNG, WebP up to 10 MB accepted. No sign-up needed.", "url": "https://cutmage.com/#tool", "image": "https://cutmage.com/og-image.png"},
+        {"@type": "HowToStep", "position": 2, "name": "AI removes the background", "text": "Cutmage's AI background remover instantly analyses your image and removes the background with pixel-precise edges in under 5 seconds.", "url": "https://cutmage.com/#tool"},
+        {"@type": "HowToStep", "position": 3, "name": "Optionally replace the background", "text": "Use the background changer to replace the removed background with a solid color, gradient preset, or your own custom photo.", "url": "https://cutmage.com/#tool"},
+        {"@type": "HowToStep", "position": 4, "name": "Download your result free", "text": "Download the transparent PNG or JPEG at full resolution. No watermark, no credits needed, completely free.", "url": "https://cutmage.com/#tool"}
       ]
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type": "Question", "name": "Is Cutmage completely free with no watermarks?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Cutmage is 100% free with no watermarks, no sign-up, and no usage limits. You can remove backgrounds from as many images as you want at no cost."}},
-        {"@type": "Question", "name": "What image formats does Cutmage support?", "acceptedAnswer": {"@type": "Answer", "text": "Cutmage accepts JPEG, PNG, and WebP images up to 10 MB. Output is a full-resolution transparent PNG or JPEG."}},
-        {"@type": "Question", "name": "How long does background removal take?", "acceptedAnswer": {"@type": "Answer", "text": "Most images are processed in under 5 seconds, handling hair, fur, and fine edge details accurately."}},
-        {"@type": "Question", "name": "Are my images stored on Cutmage servers?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your images are processed in real-time and never stored. All background compositing happens locally in your browser."}},
-        {"@type": "Question", "name": "Can I replace the background after removing it?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. After AI background removal, you can set a solid color, choose from gradient presets, or upload your own photo as a new background."}},
-        {"@type": "Question", "name": "Does Cutmage work on product photos and portraits?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Cutmage's AI background remover works on portraits, product photography, pets, food, fashion apparel, logos, and more."}},
-        {"@type": "Question", "name": "Can I use Cutmage for e-commerce product photos?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. Cutmage creates marketplace-ready product images for Amazon, eBay, Etsy, and Shopify — clean white backgrounds in seconds, free."}},
-        {"@type": "Question", "name": "How is Cutmage different from remove.bg?", "acceptedAnswer": {"@type": "Answer", "text": "Cutmage is completely free with no credit limits, no watermarks, and no sign-up required. remove.bg charges after a limited number of free uses and adds watermarks on free downloads."}}
+        {"@type": "Question", "name": "Is this background remover really free with no watermarks?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Cutmage is 100% free with no watermarks, no sign-up, and no usage limits. Remove background from as many images as you want and download at full resolution, free forever."}},
+        {"@type": "Question", "name": "What image formats does the background remover support?", "acceptedAnswer": {"@type": "Answer", "text": "Cutmage's background remover accepts JPEG, PNG, and WebP images up to 10 MB. Output is a full-resolution transparent PNG or JPEG with no watermark."}},
+        {"@type": "Question", "name": "Can I remove the white background from an image or logo?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Cutmage can remove white backgrounds, solid color backgrounds, and complex scene backgrounds from images, logos, product photos, and graphics. The result is a transparent PNG ready for use anywhere."}},
+        {"@type": "Question", "name": "How fast is the AI background removal?", "acceptedAnswer": {"@type": "Answer", "text": "Most images are processed in under 5 seconds. The AI background remover handles hair, fur, and fine transparent edges accurately at full resolution."}},
+        {"@type": "Question", "name": "Can I replace the background after removing it?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. After removing the background, use the built-in background changer to apply a solid color, gradient, or upload your own custom photo as the new background — all in your browser, free."}},
+        {"@type": "Question", "name": "Does it work for e-commerce product photo background removal?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. Cutmage is ideal for removing backgrounds from product photos for Amazon, eBay, Etsy, and Shopify. Get marketplace-ready white background images in seconds, completely free."}},
+        {"@type": "Question", "name": "How does Cutmage compare to remove.bg as a free background remover?", "acceptedAnswer": {"@type": "Answer", "text": "Cutmage is completely free with no credit limits, no watermarks, and no sign-up. remove.bg limits free users to low-resolution previews and charges for full HD downloads. Cutmage always delivers full-resolution transparent PNGs at zero cost."}},
+        {"@type": "Question", "name": "Are my images stored after background removal?", "acceptedAnswer": {"@type": "Answer", "text": "No. Images are processed in real-time and immediately returned. Nothing is stored on servers. All background compositing happens locally in your browser — your images stay completely private."}}
       ]
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cutmage.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Free Background Remover", "item": "https://cutmage.com/#tool"}
+        {"@type": "ListItem", "position": 2, "name": "Free Background Remover", "item": "https://cutmage.com/#tool"},
+        {"@type": "ListItem", "position": 3, "name": "Background Changer", "item": "https://cutmage.com/#editor"}
       ]
     }
   ]
@@ -519,7 +562,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- UPLOAD TOOL                                                         -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<main id="tool" class="tool-wrap" aria-labelledby="tool-heading">
+<section id="tool" class="tool-wrap" aria-labelledby="tool-heading">
   <div style="text-align:center;margin-bottom:24px">
     <h2 style="font-family:var(--head);font-size:28px;font-weight:700;color:var(--ink)" id="tool-heading">Remove Your Background — Free</h2>
     <p style="font-size:15px;color:var(--subtle);margin-top:6px">Drop an image below to get started instantly</p>
@@ -544,7 +587,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
       <button class="btn-ghost" id="btn-clear" style="display:none" aria-label="Clear">Clear</button>
     </div>
   </div>
-</main>
+</section>
 
 <!-- ERROR -->
 <div class="err-wrap" id="err-wrap" role="alert" aria-live="assertive">
@@ -682,13 +725,58 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- SEO CONTENT BLOCK                                                   -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<article id="about" aria-label="About Cutmage background remover" style="background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:64px 24px">
+  <div style="max-width:900px;margin:0 auto">
+    <h2 style="font-family:var(--head);font-size:32px;font-weight:700;color:var(--ink);margin-bottom:16px;letter-spacing:-.02em">The Best Free Online Background Remover — No Watermark, No Sign-Up</h2>
+    <p style="font-family:var(--sans);font-size:17px;line-height:1.75;color:var(--muted);margin-bottom:20px">
+      <strong>Cutmage</strong> is a free AI-powered <strong>background remover</strong> that lets you <strong>remove background from any image</strong> directly in your browser — in seconds. Whether you want to <strong>remove background from photo</strong> for a portrait, <strong>remove white background from image</strong> for a logo, or create a <strong>transparent background</strong> for a product shot, Cutmage handles it with pixel-perfect precision. No watermark. No sign-up. No credit card. Completely free.
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px">
+      <div>
+        <h3 style="font-family:var(--head);font-size:20px;font-weight:700;color:var(--ink);margin-bottom:14px">Supported Background Removal Types</h3>
+        <ul style="font-family:var(--sans);font-size:15px;line-height:1.9;color:var(--muted);list-style:none;padding:0">
+          <li style="padding:6px 0;border-bottom:1px solid var(--border-l);display:flex;align-items:center;gap:8px"><span style="color:var(--primary-c);font-size:16px">✓</span> <strong>Portrait background remover</strong> — headshots, ID photos, LinkedIn</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border-l);display:flex;align-items:center;gap:8px"><span style="color:var(--primary-c);font-size:16px">✓</span> <strong>Product photo background removal</strong> — Amazon, eBay, Shopify, Etsy</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border-l);display:flex;align-items:center;gap:8px"><span style="color:var(--primary-c);font-size:16px">✓</span> <strong>Remove white background from image</strong> — logos, graphics, icons</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border-l);display:flex;align-items:center;gap:8px"><span style="color:var(--primary-c);font-size:16px">✓</span> <strong>Pet & animal background eraser</strong> — fur, feathers, fine edges</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border-l);display:flex;align-items:center;gap:8px"><span style="color:var(--primary-c);font-size:16px">✓</span> <strong>Transparent background maker</strong> — PNGs for stickers, design assets</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border-l);display:flex;align-items:center;gap:8px"><span style="color:var(--primary-c);font-size:16px">✓</span> <strong>Cut out image online</strong> — clothing, shoes, accessories, cars</li>
+          <li style="padding:6px 0;display:flex;align-items:center;gap:8px"><span style="color:var(--primary-c);font-size:16px">✓</span> <strong>Background changer</strong> — replace with color, gradient, or custom photo</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-family:var(--head);font-size:20px;font-weight:700;color:var(--ink);margin-bottom:14px">How to Remove Background from Image Free</h3>
+        <ol style="font-family:var(--sans);font-size:15px;line-height:1.9;color:var(--muted);padding-left:20px">
+          <li style="padding:6px 0;border-bottom:1px solid var(--border-l)"><strong>Upload your image</strong> — drag and drop or paste any JPEG, PNG, or WebP file up to 10 MB</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border-l)"><strong>AI removes the background</strong> — our neural network processes it in under 5 seconds with precise edge detection</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border-l)"><strong>Optionally replace background</strong> — choose a solid color, gradient, or upload your own photo as the new background</li>
+          <li style="padding:6px 0"><strong>Download free</strong> — get your transparent PNG or JPEG in full resolution. No watermark, ever.</li>
+        </ol>
+        <div style="margin-top:20px;padding:16px;border-radius:12px;background:var(--border-l);border:1px solid var(--border)">
+          <p style="font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.6"><strong>Cutmage vs remove.bg:</strong> Cutmage is 100% free with no credit limits, no watermarks, and no sign-up. remove.bg limits free users to low-resolution downloads and charges for HD output. Cutmage always delivers full-resolution results at zero cost.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;padding:20px 24px;border-radius:12px;background:linear-gradient(135deg,rgba(0,154,246,.06),rgba(0,98,159,.08));border:1px solid rgba(0,154,246,.15)">
+      <p style="font-family:var(--sans);font-size:14px;color:var(--muted);line-height:1.7;margin:0">
+        <strong style="color:var(--ink)">Also known as:</strong> background eraser online · remove bg free · photo background remover · image background remover · remove background from picture · background cutter · cut out photo background · remove.bg alternative · free transparent background tool · AI photo cutout · background remover without watermark · remove background online free no signup
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- INTERACTIVE DEMO                                                    -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <section id="demo" class="py-xl bg-surface-container-low/30 border-y border-outline-variant/10 rev">
   <div class="max-w-container-max mx-auto px-gutter">
     <div class="text-center mb-lg">
-      <h2 class="font-headline-h2 text-headline-h2 text-on-background mb-sm">Master Every Detail</h2>
-      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">From product photography to portraits, see how Cutmage handles every category with surgical precision.</p>
+      <h2 class="font-headline-h2 text-headline-h2 text-on-background mb-sm">Remove Background from Any Image Type</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">From product photography to portraits, see how Cutmage's AI background remover handles every category — hair, fur, edges — with surgical precision.</p>
     </div>
     <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-outline-variant/20">
       <!-- Category tabs -->
@@ -741,37 +829,37 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <section class="py-xl px-gutter max-w-container-max mx-auto rev">
   <div class="mb-lg text-center max-w-2xl mx-auto">
-    <h2 class="font-headline-h2 text-headline-h2 text-on-background mb-sm">Engineered for Precision</h2>
-    <p class="font-body-lg text-body-lg text-on-surface-variant">Our advanced neural networks handle the toughest edges, from intricate hair to complex transparent objects.</p>
+    <h2 class="font-headline-h2 text-headline-h2 text-on-background mb-sm">Why Cutmage is the Best Free Background Remover</h2>
+    <p class="font-body-lg text-body-lg text-on-surface-variant">Our AI background remover uses advanced neural networks to handle the toughest edges — intricate hair, fur, transparent objects, and complex cutouts — with zero manual effort.</p>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
     <div class="p-md bg-white rounded-xl ambient-shadow border border-outline-variant/10 hover:active-shadow transition-all">
       <div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-sm text-primary">
         <span class="material-symbols-outlined">bolt</span>
       </div>
-      <h3 class="font-headline-h3 text-headline-h3 mb-xs text-on-background">Lightning-fast</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant">Get your image back in seconds — no waiting, no manual editing.</p>
+      <h3 class="font-headline-h3 text-headline-h3 mb-xs text-on-background">Instant Background Removal</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant">Remove background from image in under 5 seconds — no waiting, no manual editing required.</p>
     </div>
     <div class="p-md bg-white rounded-xl ambient-shadow border border-outline-variant/10 hover:active-shadow transition-all">
       <div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-sm text-primary">
         <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">auto_fix_high</span>
       </div>
-      <h3 class="font-headline-h3 text-headline-h3 mb-xs text-on-background">Pixel-perfect</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant">Pro-grade accuracy retains fine hair, fur and edge details with ease.</p>
+      <h3 class="font-headline-h3 text-headline-h3 mb-xs text-on-background">Pixel-Perfect Background Eraser</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant">Pro-grade AI precisely erases backgrounds while retaining fine hair, fur, and transparent edge details.</p>
     </div>
     <div class="p-md bg-white rounded-xl ambient-shadow border border-outline-variant/10 hover:active-shadow transition-all">
       <div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-sm text-primary">
         <span class="material-symbols-outlined">shopping_bag</span>
       </div>
-      <h3 class="font-headline-h3 text-headline-h3 mb-xs text-on-background">E-commerce ready</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant">Automate clean backgrounds for flawless marketplace listings.</p>
+      <h3 class="font-headline-h3 text-headline-h3 mb-xs text-on-background">Remove Background from Product Photos</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant">Automate white background removal for Amazon, eBay, Etsy, and Shopify product listings.</p>
     </div>
     <div class="p-md bg-white rounded-xl ambient-shadow border border-outline-variant/10 hover:active-shadow transition-all">
       <div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-sm text-primary">
         <span class="material-symbols-outlined">api</span>
       </div>
-      <h3 class="font-headline-h3 text-headline-h3 mb-xs text-on-background">API Integration</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant">Batch-process thousands of images via our REST API.</p>
+      <h3 class="font-headline-h3 text-headline-h3 mb-xs text-on-background">Bulk Background Removal API</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant">Batch-process thousands of images via our background removal REST API with Python and JS SDKs.</p>
     </div>
   </div>
 </section>
@@ -782,8 +870,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 <section class="py-xl bg-surface-container-low/50 rev">
   <div class="max-w-container-max mx-auto px-gutter">
     <div class="mb-lg text-center max-w-2xl mx-auto">
-      <h2 class="font-headline-h2 text-headline-h2 text-on-background mb-sm">Tailored for Every Workflow</h2>
-      <p class="font-body-lg text-body-lg text-on-surface-variant">Whether you're selling one item or managing a million images, Cutmage scales with you.</p>
+      <h2 class="font-headline-h2 text-headline-h2 text-on-background mb-sm">Background Removal for Every Use Case</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant">Whether you're removing backgrounds from product photos for e-commerce or creating transparent PNGs for design — Cutmage scales from one image to millions.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
       <div class="overflow-hidden rounded-xl bg-white ambient-shadow flex flex-col">
@@ -791,8 +879,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
           <img src="assets/1before.jpg" alt="E-commerce product photo ready for background removal" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy"/>
         </div>
         <div class="p-md">
-          <h4 class="font-headline-h3 text-headline-h3 mb-xs">Online Stores</h4>
-          <p class="font-body-md text-body-md text-on-surface-variant">Turn product photos into shop-ready images. Consistent listings with zero manual effort.</p>
+          <h4 class="font-headline-h3 text-headline-h3 mb-xs">Remove Background from Product Photos</h4>
+          <p class="font-body-md text-body-md text-on-surface-variant">Turn product photos into marketplace-ready images with clean white backgrounds. Perfect for Amazon, eBay, Etsy, and Shopify listings.</p>
         </div>
       </div>
       <div class="overflow-hidden rounded-xl bg-white ambient-shadow flex flex-col">
@@ -800,8 +888,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
           <img src="assets/2before.jpg" alt="Designer workflow — removing background from product image" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy"/>
         </div>
         <div class="p-md">
-          <h4 class="font-headline-h3 text-headline-h3 mb-xs">Designers</h4>
-          <p class="font-body-md text-body-md text-on-surface-variant">Quickly create polished visuals for ads and social media. Save hours on tedious manual mask work.</p>
+          <h4 class="font-headline-h3 text-headline-h3 mb-xs">Designers & Photo Editors</h4>
+          <p class="font-body-md text-body-md text-on-surface-variant">Cut out images, remove backgrounds, and create transparent PNGs for ads, social media, and creative projects in seconds.</p>
         </div>
       </div>
       <div class="overflow-hidden rounded-xl bg-white ambient-shadow flex flex-col">
@@ -809,8 +897,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
           <img src="assets/3before.jpg" alt="Agency bulk background removal for client catalog photos" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy"/>
         </div>
         <div class="p-md">
-          <h4 class="font-headline-h3 text-headline-h3 mb-xs">Agencies</h4>
-          <p class="font-body-md text-body-md text-on-surface-variant">Streamline client projects with fast, accurate edits — even for high-volume catalogs.</p>
+          <h4 class="font-headline-h3 text-headline-h3 mb-xs">Agencies & Bulk Background Removal</h4>
+          <p class="font-body-md text-body-md text-on-surface-variant">Streamline client projects with fast, accurate background removal — even for high-volume photo catalogs via API.</p>
         </div>
       </div>
     </div>
@@ -949,11 +1037,14 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
   <div style="text-align:center;margin-bottom:48px">
     <h2 class="font-headline-h2 text-headline-h2 text-on-background">Frequently Asked Questions</h2>
   </div>
-  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">Is Cutmage really free with no watermarks?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Yes, completely. Cutmage is 100% free with no watermarks, no sign-up, and no usage limits. Download at full resolution for free, forever.</p></div></div>
-  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">What image formats can I upload?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Cutmage accepts JPEG, PNG, and WebP images up to 10 MB. Output is a full-resolution transparent PNG or JPEG.</p></div></div>
-  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">Are my images stored on your servers?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>No. Images are processed and returned immediately. Nothing is stored — all editing happens locally in your browser.</p></div></div>
-  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">How long does background removal take?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Most images are processed in under 5 seconds, handling hair, fur, and fine details accurately.</p></div></div>
-  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">How is Cutmage different from remove.bg?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Cutmage is completely free with no credit limits, no watermarks, and no sign-up. remove.bg charges after a limited free tier and adds watermarks on free downloads.</p></div></div>
+  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">Is this background remover really free with no watermarks?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Yes, completely. Cutmage is 100% free with no watermarks, no sign-up, and no usage limits. Remove background from as many images as you want — download at full resolution, free forever.</p></div></div>
+  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">What image formats does the background remover support?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Cutmage's background remover accepts JPEG, PNG, and WebP images up to 10 MB. Output is a full-resolution transparent PNG or JPEG with no watermark.</p></div></div>
+  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">Can I remove the white background from an image or logo?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Yes. Cutmage can remove white backgrounds, solid color backgrounds, and complex scene backgrounds from images, logos, product photos, and graphics. The result is a transparent PNG ready for use anywhere.</p></div></div>
+  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">How fast is the AI background removal?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Most images are processed in under 5 seconds. The AI background remover handles hair, fur, and fine transparent edges accurately at full resolution.</p></div></div>
+  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">Can I replace the background after removing it?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Yes. After removing the background, use the built-in background changer to apply a solid color, gradient, or upload your own custom photo as the new background — all in your browser, free.</p></div></div>
+  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">Does it work for e-commerce product photo backgrounds?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Absolutely. Cutmage is ideal for removing backgrounds from product photos for Amazon, eBay, Etsy, and Shopify. Get marketplace-ready white background images in seconds, completely free.</p></div></div>
+  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">How does Cutmage compare to remove.bg as a free background remover?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Cutmage is completely free with no credit limits, no watermarks, and no sign-up. remove.bg limits free users to low-resolution previews and charges for full HD downloads. Cutmage always delivers full-resolution transparent PNGs at zero cost.</p></div></div>
+  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">Are my images stored after background removal?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>No. Images are processed in real-time and immediately returned. Nothing is ever stored on our servers. All background compositing and editing happens locally in your browser — your images stay private.</p></div></div>
 </section>
 
 </main>

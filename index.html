@@ -134,8 +134,8 @@
         {"@type": "Question", "name": "Can I remove the white background from an image or logo?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Cutmage can remove white backgrounds, solid color backgrounds, and complex scene backgrounds from images, logos, product photos, and graphics. The result is a transparent PNG ready for use anywhere."}},
         {"@type": "Question", "name": "How fast is the AI background removal?", "acceptedAnswer": {"@type": "Answer", "text": "Most images are processed in under 5 seconds. The AI background remover handles hair, fur, and fine transparent edges accurately at full resolution."}},
         {"@type": "Question", "name": "Can I replace the background after removing it?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. After removing the background, use the built-in background changer to apply a solid color, gradient, or upload your own custom photo as the new background — all in your browser, free."}},
-        {"@type": "Question", "name": "Does it work for e-commerce product photo background removal?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. Cutmage is ideal for removing backgrounds from product photos for Amazon, eBay, Etsy, and Shopify. Get marketplace-ready white background images in seconds, completely free."}},
-        {"@type": "Question", "name": "How does Cutmage compare to remove.bg as a free background remover?", "acceptedAnswer": {"@type": "Answer", "text": "Cutmage is completely free with no credit limits, no watermarks, and no sign-up. remove.bg limits free users to low-resolution previews and charges for full HD downloads. Cutmage always delivers full-resolution transparent PNGs at zero cost."}},
+        {"@type": "Question", "name": "Does it work for e-commerce product photo background removal?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. Cutmage is ideal for removing backgrounds from product photos for online marketplaces and e-commerce stores. Get marketplace-ready white background images in seconds, completely free."}},
+        {"@type": "Question", "name": "How does Cutmage differ from other online background removers?", "acceptedAnswer": {"@type": "Answer", "text": "Most background remover tools limit free users to low-resolution results or add watermarks unless you pay. Cutmage is 100% free with no credit limits, no watermarks, no sign-up, and always delivers full-resolution transparent PNG results at zero cost."}},
         {"@type": "Question", "name": "Are my images stored after background removal?", "acceptedAnswer": {"@type": "Answer", "text": "No. Images are processed in real-time and immediately returned. Nothing is stored on servers. All background compositing happens locally in your browser — your images stay completely private."}}
       ]
     },
@@ -429,13 +429,86 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 .cat-tab.active{background:var(--primary-c);color:#fff}
 .cat-tab:not(.active){color:var(--muted);background:transparent}
 .cat-tab:not(.active):hover{background:var(--border-l)}
-/* Pricing card */
-.price-card{background:#fff;border-radius:0.75rem;padding:40px;display:flex;flex-direction:column;border:1px solid var(--border);transition:box-shadow .2s}
-.price-card:hover{box-shadow:var(--sh2)}
-.price-card.featured{border:2px solid var(--primary-c);box-shadow:var(--sh2)}
-@media(max-width:720px){
-  .ed-layout{grid-template-columns:1fr}
+/* ── MOBILE-FIRST LAYOUT ─────────────────────────────────────────── */
+/* On mobile: tool appears first (before hero) */
+@media(max-width:767px){
+  main{display:flex;flex-direction:column}
+  #tool{order:1;padding-top:0 !important;margin-bottom:0}
+  #hero-section{order:2}
+  #about{order:3}
+  #demo{order:4}
+  #benefits-section{order:5}
+  #usecases-section{order:6}
+  #api{order:7}
+  #testimonials-section{order:8}
+  #faq{order:9}
+  footer{order:10}
 }
+
+/* ── MOBILE TYPOGRAPHY & SPACING ────────────────────────────────── */
+@media(max-width:767px){
+  /* font scale-down */
+  .font-display-lg,.text-display-lg,[class*="display-lg"]{font-size:2rem !important;line-height:1.2 !important;letter-spacing:-.02em !important}
+  .font-headline-h1,.text-headline-h1{font-size:1.75rem !important}
+  .font-headline-h2,.text-headline-h2{font-size:1.5rem !important}
+  .font-body-lg,.text-body-lg{font-size:1rem !important}
+  /* reduce section vertical padding */
+  .py-xl{padding-top:2.5rem !important;padding-bottom:2.5rem !important}
+  .pt-xl{padding-top:2.5rem !important}
+  .pb-20{padding-bottom:1.5rem !important}
+  /* gutter */
+  .px-gutter{padding-left:1rem !important;padding-right:1rem !important}
+  .px-margin-edge{padding-left:1rem !important;padding-right:1rem !important}
+  /* hero */
+  #hero-section{padding-top:2rem !important;padding-bottom:1.5rem !important}
+  #hero-section .gap-xl{gap:1.5rem !important}
+  #hero-section .space-y-md > *+*{margin-top:1rem !important}
+  /* hero cta row */
+  #hero-section .flex.gap-sm{flex-direction:column !important}
+  /* social proof */
+  #hero-section .gap-xl.opacity-40{gap:1.5rem !important;flex-wrap:wrap !important}
+  /* slider */
+  #hero-slider{aspect-ratio:1/1 !important}
+  /* tool wrap */
+  .tool-wrap{padding:12px 12px 28px !important}
+  .drop-zone{padding:32px 16px !important;min-height:180px !important}
+  .dz-h{font-size:16px !important}
+  /* editor */
+  .ed-layout{grid-template-columns:1fr !important}
+  #editor{padding:0 12px 32px !important}
+  /* about/SEO block: single column */
+  #about [style*="grid-template-columns:1fr 1fr"],
+  #about [style*="grid-template-columns: 1fr 1fr"]{display:block !important}
+  #about [style*="grid-template-columns:1fr 1fr"] > *,
+  #about [style*="grid-template-columns: 1fr 1fr"] > *{margin-bottom:2rem}
+  #about{padding:2.5rem 1rem !important}
+  #about [style*="max-width:900px"]{padding:0 !important}
+  /* demo */
+  #demo .grid{grid-template-columns:1fr !important}
+  /* benefits */
+  #benefits-section .grid{grid-template-columns:1fr 1fr !important}
+  /* use cases */
+  #usecases-section .grid{grid-template-columns:1fr !important}
+  /* api */
+  #api .grid{grid-template-columns:1fr !important}
+  #api pre{font-size:11px !important;overflow-x:auto !important}
+  /* testimonials */
+  #testimonials-section .grid{grid-template-columns:1fr !important}
+  /* faq */
+  #faq{padding-left:1rem !important;padding-right:1rem !important}
+  .faq-q{font-size:15px !important;padding:14px 0 !important}
+  /* footer */
+  footer .grid{grid-template-columns:1fr !important}
+  footer .gap-lg{gap:1.5rem !important}
+  /* nav */
+  .nav-gap-lg{gap:1rem !important}
+  /* hide social proof logos on very small screens */
+  .trust-bar{display:none !important}
+}
+
+/* ── SMOOTH ANIMATION HELPERS ────────────────────────────────────── */
+.comparison-slider img{will-change:transform}
+canvas#net-canvas{will-change:auto}
 </style>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased">
@@ -444,20 +517,20 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 <!-- NAV                                                                 -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <header class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm">
-  <div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-20">
+  <div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-20 nav-gap-lg">
     <div class="flex items-center gap-lg">
       <a href="/" class="font-headline-h3 text-headline-h3 font-bold text-primary no-underline">Cutmage</a>
       <nav class="hidden md:flex gap-md items-center">
-        <a href="#" class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary hover:text-primary transition-colors duration-200 no-underline">Product</a>
-        <a href="#pricing" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">Pricing</a>
+        <a href="#tool" class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary hover:text-primary transition-colors duration-200 no-underline">Tool</a>
+        <a href="#demo" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">Demo</a>
         <a href="#api" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">API</a>
-        <a href="#faq" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">Resources</a>
+        <a href="#faq" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">FAQ</a>
       </nav>
     </div>
-    <div class="flex items-center gap-sm">
-      <button class="font-label-md text-label-md text-secondary hover:text-primary px-md py-xs transition-colors">Log in</button>
-      <a href="#tool" class="bg-primary-container text-on-secondary px-md py-sm rounded-xl font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all no-underline">Sign up free</a>
-    </div>
+    <a href="#tool" class="bg-primary-container text-on-secondary px-md py-sm rounded-xl font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all no-underline flex items-center gap-xs">
+      <span class="material-symbols-outlined text-[16px]">auto_fix_high</span>
+      <span>Remove Background</span>
+    </a>
   </div>
 </header>
 
@@ -547,14 +620,13 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
   </div>
 
   <!-- Social proof bar -->
-  <div class="max-w-container-max mx-auto px-gutter mt-20 pt-lg border-t border-outline-variant/20">
-    <p class="font-label-md text-label-md text-center text-on-surface-variant mb-md uppercase tracking-widest opacity-60">Trusted by 2M+ creators and brands</p>
+  <div class="trust-bar max-w-container-max mx-auto px-gutter mt-20 pt-lg border-t border-outline-variant/20">
+    <p class="font-label-md text-label-md text-center text-on-surface-variant mb-md uppercase tracking-widest opacity-60">Trusted by 2M+ creators worldwide</p>
     <div class="flex flex-wrap justify-center items-center gap-xl opacity-40">
-      <span class="font-headline-h3 text-headline-h3 font-bold text-on-surface-variant">Shopify</span>
-      <span class="font-headline-h3 text-headline-h3 font-bold text-on-surface-variant">Etsy</span>
-      <span class="font-headline-h3 text-headline-h3 font-bold text-on-surface-variant">Adobe</span>
-      <span class="font-headline-h3 text-headline-h3 font-bold text-on-surface-variant">Canva</span>
-      <span class="font-headline-h3 text-headline-h3 font-bold text-on-surface-variant">Amazon</span>
+      <span class="font-headline-h2 text-headline-h2 font-bold text-on-surface-variant">E-commerce</span>
+      <span class="font-headline-h2 text-headline-h2 font-bold text-on-surface-variant">Designers</span>
+      <span class="font-headline-h2 text-headline-h2 font-bold text-on-surface-variant">Agencies</span>
+      <span class="font-headline-h2 text-headline-h2 font-bold text-on-surface-variant">Photographers</span>
     </div>
   </div>
 </section>
@@ -756,14 +828,14 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
           <li style="padding:6px 0"><strong>Download free</strong> — get your transparent PNG or JPEG in full resolution. No watermark, ever.</li>
         </ol>
         <div style="margin-top:20px;padding:16px;border-radius:12px;background:var(--border-l);border:1px solid var(--border)">
-          <p style="font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.6"><strong>Cutmage vs remove.bg:</strong> Cutmage is 100% free with no credit limits, no watermarks, and no sign-up. remove.bg limits free users to low-resolution downloads and charges for HD output. Cutmage always delivers full-resolution results at zero cost.</p>
+          <p style="font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.6"><strong>Why switch to Cutmage?</strong> Most online background removers limit free users to low-resolution downloads, add watermarks, or require a paid subscription for HD output. Cutmage is 100% free — no credits, no watermarks, no account needed — always delivering full-resolution transparent PNG results at zero cost.</p>
         </div>
       </div>
     </div>
 
     <div style="margin-top:32px;padding:20px 24px;border-radius:12px;background:linear-gradient(135deg,rgba(0,154,246,.06),rgba(0,98,159,.08));border:1px solid rgba(0,154,246,.15)">
       <p style="font-family:var(--sans);font-size:14px;color:var(--muted);line-height:1.7;margin:0">
-        <strong style="color:var(--ink)">Also known as:</strong> background eraser online · remove bg free · photo background remover · image background remover · remove background from picture · background cutter · cut out photo background · remove.bg alternative · free transparent background tool · AI photo cutout · background remover without watermark · remove background online free no signup
+        <strong style="color:var(--ink)">Free background remover tools by Cutmage:</strong> background eraser online · remove bg free · photo background remover · image background remover · remove background from picture · background cutter · cut out photo background · free transparent background tool · AI photo cutout · background remover without watermark · remove background online free no signup · free background removal tool
       </p>
     </div>
   </div>
@@ -827,7 +899,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- KEY BENEFITS                                                        -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="py-xl px-gutter max-w-container-max mx-auto rev">
+<section id="benefits-section" class="py-xl px-gutter max-w-container-max mx-auto rev">
   <div class="mb-lg text-center max-w-2xl mx-auto">
     <h2 class="font-headline-h2 text-headline-h2 text-on-background mb-sm">Why Cutmage is the Best Free Background Remover</h2>
     <p class="font-body-lg text-body-lg text-on-surface-variant">Our AI background remover uses advanced neural networks to handle the toughest edges — intricate hair, fur, transparent objects, and complex cutouts — with zero manual effort.</p>
@@ -852,7 +924,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
         <span class="material-symbols-outlined">shopping_bag</span>
       </div>
       <h3 class="font-headline-h3 text-headline-h3 mb-xs text-on-background">Remove Background from Product Photos</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant">Automate white background removal for Amazon, eBay, Etsy, and Shopify product listings.</p>
+      <p class="font-body-md text-body-md text-on-surface-variant">Automate white background removal for online marketplaces and e-commerce stores product listings.</p>
     </div>
     <div class="p-md bg-white rounded-xl ambient-shadow border border-outline-variant/10 hover:active-shadow transition-all">
       <div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-sm text-primary">
@@ -867,7 +939,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- USE CASES                                                           -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="py-xl bg-surface-container-low/50 rev">
+<section id="usecases-section" class="py-xl bg-surface-container-low/50 rev">
   <div class="max-w-container-max mx-auto px-gutter">
     <div class="mb-lg text-center max-w-2xl mx-auto">
       <h2 class="font-headline-h2 text-headline-h2 text-on-background mb-sm">Background Removal for Every Use Case</h2>
@@ -880,7 +952,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
         </div>
         <div class="p-md">
           <h4 class="font-headline-h3 text-headline-h3 mb-xs">Remove Background from Product Photos</h4>
-          <p class="font-body-md text-body-md text-on-surface-variant">Turn product photos into marketplace-ready images with clean white backgrounds. Perfect for Amazon, eBay, Etsy, and Shopify listings.</p>
+          <p class="font-body-md text-body-md text-on-surface-variant">Turn product photos into marketplace-ready images with clean white backgrounds. Perfect for online marketplaces and e-commerce stores listings.</p>
         </div>
       </div>
       <div class="overflow-hidden rounded-xl bg-white ambient-shadow flex flex-col">
@@ -934,56 +1006,11 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- PRICING                                                             -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section id="pricing" class="py-xl px-gutter max-w-container-max mx-auto rev">
-  <div class="text-center mb-xl">
-    <h2 class="font-headline-h2 text-headline-h2 mb-sm">Simple, Transparent Pricing</h2>
-    <p class="font-body-lg text-body-lg text-on-surface-variant">Start free. Upgrade when you need more.</p>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
-    <div class="price-card">
-      <h3 class="font-headline-h3 text-headline-h3 mb-xs">Free</h3>
-      <div class="flex items-baseline gap-xs mb-md">
-        <span class="text-4xl font-bold font-headline-h1">$0</span>
-        <span class="text-on-surface-variant">/mo</span>
-      </div>
-      <p class="font-body-md text-body-md text-on-surface-variant mb-lg">Unlimited free removals. No watermarks, no sign-up required. Perfect for personal use.</p>
-      <div class="mt-auto">
-        <a href="#tool" class="block w-full py-sm border border-primary text-primary rounded-lg font-label-md text-label-md text-center hover:bg-primary-container/5 transition-all no-underline">Get Started Free</a>
-      </div>
-    </div>
-    <div class="price-card featured relative">
-      <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-container text-on-secondary px-md py-xs rounded-full font-label-md text-label-md whitespace-nowrap">Most Popular</div>
-      <h3 class="font-headline-h3 text-headline-h3 mb-xs">Pro</h3>
-      <div class="flex items-baseline gap-xs mb-md">
-        <span class="text-4xl font-bold font-headline-h1">$9</span>
-        <span class="text-on-surface-variant">/mo</span>
-      </div>
-      <p class="font-body-md text-body-md text-on-surface-variant mb-lg">100 HD credits/month. Full API access, priority processing, and batch tools.</p>
-      <div class="mt-auto">
-        <button class="w-full py-sm bg-primary-container text-on-secondary rounded-lg font-label-md hover:opacity-90 transition-all">Subscribe Now</button>
-      </div>
-    </div>
-    <div class="price-card">
-      <h3 class="font-headline-h3 text-headline-h3 mb-xs">Scale</h3>
-      <div class="flex items-baseline gap-xs mb-md">
-        <span class="text-4xl font-bold font-headline-h1">$29</span>
-        <span class="text-on-surface-variant">/mo</span>
-      </div>
-      <p class="font-body-md text-body-md text-on-surface-variant mb-lg">500 credits/month. Priority support, custom workflows, and dedicated account manager.</p>
-      <div class="mt-auto">
-        <button class="w-full py-sm border border-primary text-primary rounded-lg font-label-md hover:bg-primary-container/5 transition-all">Contact Sales</button>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- TESTIMONIALS                                                        -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="py-xl bg-surface-container-low/30 rev">
+<section id="testimonials-section" class="py-xl bg-surface-container-low/30 rev">
   <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-3 gap-lg">
     <div class="space-y-sm">
       <div class="flex text-tertiary-container">
@@ -1042,8 +1069,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
   <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">Can I remove the white background from an image or logo?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Yes. Cutmage can remove white backgrounds, solid color backgrounds, and complex scene backgrounds from images, logos, product photos, and graphics. The result is a transparent PNG ready for use anywhere.</p></div></div>
   <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">How fast is the AI background removal?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Most images are processed in under 5 seconds. The AI background remover handles hair, fur, and fine transparent edges accurately at full resolution.</p></div></div>
   <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">Can I replace the background after removing it?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Yes. After removing the background, use the built-in background changer to apply a solid color, gradient, or upload your own custom photo as the new background — all in your browser, free.</p></div></div>
-  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">Does it work for e-commerce product photo backgrounds?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Absolutely. Cutmage is ideal for removing backgrounds from product photos for Amazon, eBay, Etsy, and Shopify. Get marketplace-ready white background images in seconds, completely free.</p></div></div>
-  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">How does Cutmage compare to remove.bg as a free background remover?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Cutmage is completely free with no credit limits, no watermarks, and no sign-up. remove.bg limits free users to low-resolution previews and charges for full HD downloads. Cutmage always delivers full-resolution transparent PNGs at zero cost.</p></div></div>
+  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">Does it work for e-commerce product photo backgrounds?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Absolutely. Cutmage is ideal for removing backgrounds from product photos for online marketplaces and e-commerce stores. Get marketplace-ready white background images in seconds, completely free.</p></div></div>
+  <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">How does Cutmage differ from other online background removers?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>Most online background removal tools limit free users to low-resolution results or watermark your downloads. Cutmage is 100% free — no credit limits, no watermarks, no sign-up — and always delivers full-resolution transparent PNG results at zero cost.</p></div></div>
   <div class="faq-item"><button class="faq-q" aria-expanded="false"><h3 style="font:inherit;margin:0">Are my images stored after background removal?</h3><span class="faq-ic">+</span></button><div class="faq-a"><p>No. Images are processed in real-time and immediately returned. Nothing is ever stored on our servers. All background compositing and editing happens locally in your browser — your images stay private.</p></div></div>
 </section>
 
@@ -1068,7 +1095,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
       <ul class="space-y-sm list-none">
         <li><a href="#tool" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all no-underline">Background Removal</a></li>
         <li><a href="#api" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all no-underline">API Documentation</a></li>
-        <li><a href="#pricing" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all no-underline">Pricing Plans</a></li>
+        <li><a href="#api" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all no-underline">API Access</a></li>
       </ul>
     </div>
     <div>
@@ -1094,87 +1121,96 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 
 <script>
 // ═══════════════════════════════════════════════════════
-// NETWORK CANVAS BACKGROUND
+// NETWORK CANVAS — smooth 60fps spider-web animation
 // ═══════════════════════════════════════════════════════
 (function(){
   const canvas = document.getElementById('net-canvas');
   if(!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H, nodes, mouse = {x:-999, y:-999};
-  const COUNT = 55, MAX_DIST = 160, NODE_SPEED = 0.35;
+  // skip on mobile to save CPU
+  if(window.innerWidth < 768){ canvas.style.display='none'; return; }
+  const ctx = canvas.getContext('2d', {alpha:true});
+  let W, H, nodes;
+  let mouseX = -999, mouseY = -999;
+  let heroRect = null;
+  const COUNT = 48, MAX_DIST = 150, SPEED = 0.28, MAX_V = 0.9;
 
   function resize(){
     const hero = document.getElementById('hero-section');
     W = canvas.width  = hero.offsetWidth;
     H = canvas.height = hero.offsetHeight;
+    heroRect = null; // invalidate cached rect
   }
 
   function mkNode(){
-    const angle = Math.random() * Math.PI * 2;
-    const speed = (0.3 + Math.random() * 0.5) * NODE_SPEED;
-    return {
-      x: Math.random() * W,
-      y: Math.random() * H,
-      vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed,
-      r: 2 + Math.random() * 2
-    };
+    const a = Math.random() * Math.PI * 2;
+    const s = (0.25 + Math.random() * 0.5) * SPEED;
+    return { x:Math.random()*W, y:Math.random()*H, vx:Math.cos(a)*s, vy:Math.sin(a)*s, r:1.5+Math.random()*1.5 };
   }
 
-  function init(){ resize(); nodes = Array.from({length: COUNT}, mkNode); }
+  function init(){ resize(); nodes = Array.from({length:COUNT}, mkNode); }
 
   function draw(){
     ctx.clearRect(0, 0, W, H);
+
     for(const n of nodes){
-      const dx = n.x - mouse.x, dy = n.y - mouse.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if(dist < 120 && dist > 0){
-        const force = (120 - dist) / 120 * 0.4;
-        n.vx += (dx / dist) * force;
-        n.vy += (dy / dist) * force;
+      // mouse repulsion — read cached mouse coords
+      const dx = n.x - mouseX, dy = n.y - mouseY;
+      const d2 = dx*dx + dy*dy;
+      if(d2 < 10000 && d2 > 0){ // 100px radius
+        const d = Math.sqrt(d2);
+        const f = (100-d)/100 * 0.35;
+        n.vx += dx/d * f; n.vy += dy/d * f;
       }
-      n.vx *= 0.98; n.vy *= 0.98;
+      // smooth damping
+      n.vx *= 0.985; n.vy *= 0.985;
+      // clamp speed
       const spd = Math.sqrt(n.vx*n.vx + n.vy*n.vy);
-      if(spd > 1.2){ n.vx = n.vx/spd*1.2; n.vy = n.vy/spd*1.2; }
+      if(spd > MAX_V){ const sc=MAX_V/spd; n.vx*=sc; n.vy*=sc; }
       n.x += n.vx; n.y += n.vy;
-      if(n.x < -20) n.x = W+20;
-      if(n.x > W+20) n.x = -20;
-      if(n.y < -20) n.y = H+20;
-      if(n.y > H+20) n.y = -20;
+      // wrap
+      if(n.x < -30) n.x = W+30; else if(n.x > W+30) n.x = -30;
+      if(n.y < -30) n.y = H+30; else if(n.y > H+30) n.y = -30;
     }
-    for(let i = 0; i < nodes.length; i++){
-      for(let j = i+1; j < nodes.length; j++){
-        const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
-        const d = Math.sqrt(dx*dx + dy*dy);
-        if(d < MAX_DIST){
-          const alpha = (1 - d/MAX_DIST) * 0.12;
+
+    // draw edges (batch with single path per alpha group is faster)
+    for(let i=0; i<nodes.length; i++){
+      for(let j=i+1; j<nodes.length; j++){
+        const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+        const d2=dx*dx+dy*dy;
+        if(d2 < MAX_DIST*MAX_DIST){
+          const alpha = (1 - Math.sqrt(d2)/MAX_DIST) * 0.11;
+          ctx.strokeStyle = `rgba(0,98,159,${alpha.toFixed(3)})`;
+          ctx.lineWidth = 0.8;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
           ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.strokeStyle = `rgba(0,98,159,${alpha})`;
-          ctx.lineWidth = 1;
           ctx.stroke();
         }
       }
     }
+
+    // draw nodes
+    ctx.fillStyle = 'rgba(0,154,246,0.2)';
     for(const n of nodes){
       ctx.beginPath();
       ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
-      ctx.fillStyle = 'rgba(0,154,246,0.18)';
       ctx.fill();
     }
+
     requestAnimationFrame(draw);
   }
 
+  // cache hero bounding rect on mousemove, invalidate on resize
   const hero = document.getElementById('hero-section');
   hero.addEventListener('mousemove', e => {
-    const rect = hero.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-  hero.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
-  window.addEventListener('resize', resize);
-  init(); draw();
+    if(!heroRect) heroRect = hero.getBoundingClientRect();
+    mouseX = e.clientX - heroRect.left;
+    mouseY = e.clientY - heroRect.top;
+  }, {passive:true});
+  hero.addEventListener('mouseleave', () => { mouseX=-999; mouseY=-999; });
+  window.addEventListener('resize', () => { resize(); });
+  init();
+  requestAnimationFrame(draw);
 })();
 
 // ═══════════════════════════════════════════════════════
@@ -1215,25 +1251,32 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
     }
   }
 
-  let sweepRaf;
+  let sweepRaf, sliderRect = null;
+
+  function getRect(){ return sliderRect || (sliderRect = slider.getBoundingClientRect()); }
+  window.addEventListener('resize', () => { sliderRect = null; });
+
   function startSweep(){
     if(sweepRaf) cancelAnimationFrame(sweepRaf);
     animStart = null;
-    const rect = slider.getBoundingClientRect();
+    sliderRect = null; // refresh on each cycle start
+
     function sweep(ts){
       if(userDragging){ sweepRaf = requestAnimationFrame(sweep); return; }
       if(!animStart) animStart = ts;
-      const elapsed = ts - animStart;
-      const t = Math.min(elapsed / CYCLE_MS, 1);
-      const pct = 75 - 45 * easeInOut(t);
-      setPos(rect.left + rect.width * pct/100);
-      progress.style.transition = 'none';
+      const t = Math.min((ts - animStart) / CYCLE_MS, 1);
+      // smooth cosine ease: 75% -> 28%
+      const pct = 28 + 47 * (1 - easeInOut(t));
+      const r = getRect();
+      setPos(r.left + r.width * pct / 100);
       progress.style.width = (t * 100) + '%';
-      if(t < 1){ sweepRaf = requestAnimationFrame(sweep); }
-      else {
+      if(t < 1){
+        sweepRaf = requestAnimationFrame(sweep);
+      } else {
         current = (current + 1) % PAIRS.length;
         loadPair(current, false);
         animStart = null;
+        sliderRect = null;
         progress.style.width = '0%';
         sweepRaf = requestAnimationFrame(sweep);
       }
@@ -1241,7 +1284,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
     sweepRaf = requestAnimationFrame(sweep);
   }
 
-  function easeInOut(t){ return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+  // smooth cubic ease
+  function easeInOut(t){ return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
 
   slider.addEventListener('mousedown',  e => { userDragging = true; setPos(e.clientX); e.preventDefault(); });
   slider.addEventListener('touchstart', e => { userDragging = true; setPos(e.touches[0].clientX); }, {passive:true});
@@ -1294,6 +1338,30 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 // ═══════════════════════════════════════════════════════
 const API_BASE = 'https://api.cutmage.com';
 const API_KEY  = '';
+
+// ═══════════════════════════════════════════════════════
+// CLIENT-SIDE RATE LIMITER & REQUEST QUEUE
+// Prevents API overload: max 1 concurrent request,
+// min 2s between submissions, queue of 1 pending.
+// ═══════════════════════════════════════════════════════
+const RateLimiter = (() => {
+  let inFlight = false;
+  let lastEnd = 0;
+  const MIN_GAP_MS = 2000; // minimum 2s between requests
+
+  return {
+    canSubmit() {
+      return !inFlight && (Date.now() - lastEnd) >= MIN_GAP_MS;
+    },
+    waitMs() {
+      if(inFlight) return Infinity;
+      const gap = MIN_GAP_MS - (Date.now() - lastEnd);
+      return gap > 0 ? gap : 0;
+    },
+    begin() { inFlight = true; },
+    end()   { inFlight = false; lastEnd = Date.now(); }
+  };
+})();
 
 // ═══════════════════════════════════════════════════════
 // COLOUR & GRADIENT DATA
@@ -1597,6 +1665,14 @@ function animSteps() {
 
 document.getElementById('btn-go').addEventListener('click', async () => {
   if (!selFile) return; clearErr();
+  // rate-limit check
+  const wait = RateLimiter.waitMs();
+  if(wait === Infinity){ showErr('A removal is already in progress. Please wait.'); return; }
+  if(wait > 0){
+    showErr(`Please wait ${(wait/1000).toFixed(1)}s before submitting again.`);
+    return;
+  }
+  RateLimiter.begin();
   document.getElementById('btn-go').disabled = true;
   document.getElementById('prog-wrap').classList.add('on');
   document.getElementById('proc').classList.add('on');
@@ -1636,8 +1712,10 @@ document.getElementById('btn-go').addEventListener('click', async () => {
     document.getElementById('editor').classList.add('on');
     switchStep('compare'); showView('ba'); setViewTab('compare');
     setTimeout(() => document.getElementById('editor').scrollIntoView({behavior:'smooth',block:'start'}), 100);
+    RateLimiter.end();
     showToast(`Done in ${elapsed}s! 🎉`);
   } catch(err) {
+    RateLimiter.end();
     document.getElementById('proc').classList.remove('on');
     document.getElementById('prog-wrap').classList.remove('on');
     document.getElementById('btn-go').disabled = false;

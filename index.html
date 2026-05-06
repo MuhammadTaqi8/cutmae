@@ -1303,8 +1303,8 @@ canvas#net-canvas{will-change:auto}
     <div>
       <h4 class="font-label-md text-label-md font-bold mb-md text-on-surface">Company</h4>
       <ul class="space-y-sm list-none">
-        <li><a href="#" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all no-underline">About Us</a></li>
-        <li><a href="#" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all no-underline">Blog</a></li>
+        <li><a href="#" data-about class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all no-underline">About Us</a></li>
+        <li><a href="/blog" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all no-underline">Blog</a></li>
         <li><a href="/sitemap.xml" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all no-underline">Sitemap</a></li>
       </ul>
     </div>
@@ -1312,6 +1312,24 @@ canvas#net-canvas{will-change:auto}
 </footer>
 
 <div id="toast" role="status" aria-live="polite"><span class="tdot" aria-hidden="true"></span><span id="toast-txt"></span></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- ABOUT MODAL                                                         -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<div id="about-modal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(11,28,48,.55);backdrop-filter:blur(6px);padding:20px;overflow-y:auto" role="dialog" aria-modal="true" aria-labelledby="am-title">
+  <div style="background:#fff;border-radius:20px;max-width:520px;margin:8vh auto;padding:40px 36px;box-shadow:0 24px 80px rgba(0,0,0,.2);position:relative">
+    <button id="am-close" style="position:absolute;top:14px;right:14px;background:var(--border-l);border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:20px;color:var(--subtle);display:flex;align-items:center;justify-content:center;line-height:1" aria-label="Close">×</button>
+    <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#2355f5,#009af6);margin-bottom:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(35,85,245,.28)">
+      <span style="color:#fff;font-family:var(--head);font-size:24px;font-weight:800;line-height:1">C</span>
+    </div>
+    <h2 id="am-title" style="font-family:var(--head);font-size:26px;font-weight:700;color:var(--ink);margin-bottom:16px;letter-spacing:-.02em">About Cutmage</h2>
+    <p style="font-family:var(--sans);font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:14px">Cutmage is a free AI-powered background removal tool built for creators, sellers, and developers who need professional results — without expensive software or complicated workflows.</p>
+    <p style="font-family:var(--sans);font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:28px">Launched in 2024 and processing thousands of images daily — completely free, no watermarks, no sign-up required.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="#tool" id="am-cta" style="background:linear-gradient(135deg,#2355f5,#009af6);color:#fff;padding:12px 24px;border-radius:10px;font-family:var(--head);font-size:14px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px">Try the Tool →</a>
+    </div>
+  </div>
+</div>
 
 <script>
 // ═══════════════════════════════════════════════════════
@@ -2139,6 +2157,22 @@ document.querySelectorAll('.rev').forEach(el => io.observe(el));
       nav.classList.remove('open');
     }
   });
+})();
+
+// ═══════════════════════════════════════════════════════
+// ABOUT MODAL
+// ═══════════════════════════════════════════════════════
+(function(){
+  const modal = document.getElementById('about-modal');
+  const close = document.getElementById('am-close');
+  const cta   = document.getElementById('am-cta');
+  function open()  { modal.style.display = 'block'; document.body.style.overflow = 'hidden'; }
+  function shut()  { modal.style.display = 'none';  document.body.style.overflow = ''; }
+  document.querySelectorAll('[data-about]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); open(); }));
+  close.addEventListener('click', shut);
+  cta.addEventListener('click', shut);
+  modal.addEventListener('click', e => { if(e.target === modal) shut(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') shut(); });
 })();
 </script>
 </body>

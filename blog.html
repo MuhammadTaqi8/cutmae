@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Blog — Cutmage | Background Removal Tips & Guides</title>
+<meta name="description" content="Background removal tutorials, e-commerce photography tips, and product image guides — coming soon from the Cutmage team."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://cutmage.com/blog"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2300629f'/><text y='22' x='5' font-size='20' fill='white' font-family='Inter,sans-serif' font-weight='700'>C</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f8f9ff;--white:#ffffff;
+  --primary:#00629f;--primary-c:#009af6;--blue:#2355f5;
+  --ink:#0b1c30;--muted:#3f4752;--subtle:#6f7883;
+  --border:#bfc7d4;--border-l:#eff4ff;
+  --sh2:0 12px 32px rgba(45,45,45,.08);
+  --sans:'Manrope',system-ui,sans-serif;
+  --head:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);min-height:100vh;overflow-x:hidden}
+
+/* NAV */
+header{position:fixed;top:0;left:0;width:100%;z-index:50;background:rgba(248,249,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(191,199,212,.3);height:60px;display:flex;align-items:center;padding:0 24px}
+.nav-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--head);font-size:20px;font-weight:700;color:var(--primary);text-decoration:none}
+.nav-cta{background:linear-gradient(135deg,#2355f5,#009af6);color:#fff;padding:9px 20px;border-radius:10px;font-family:var(--head);font-size:13px;font-weight:700;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.88}
+
+/* HERO */
+.blog-hero{padding:120px 24px 72px;text-align:center;max-width:700px;margin:0 auto}
+.blog-hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(35,85,245,.07);color:var(--blue);border:1px solid rgba(35,85,245,.15);border-radius:50px;padding:5px 14px;font-family:var(--head);font-size:13px;font-weight:600;margin-bottom:24px}
+.blog-hero h1{font-family:var(--head);font-size:clamp(32px,6vw,52px);font-weight:800;color:var(--ink);line-height:1.1;letter-spacing:-.03em;margin-bottom:20px}
+.blog-hero h1 span{background:linear-gradient(135deg,#2355f5,#009af6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.blog-hero p{font-size:18px;line-height:1.7;color:var(--muted);max-width:520px;margin:0 auto 40px}
+
+/* EMAIL CAPTURE */
+.email-box{background:#fff;border:1px solid rgba(35,85,245,.14);border-radius:20px;padding:36px;max-width:480px;margin:0 auto 80px;box-shadow:0 4px 6px rgba(35,85,245,.04),0 20px 48px rgba(35,85,245,.08)}
+.email-box h2{font-family:var(--head);font-size:20px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.email-box p{font-size:14px;color:var(--subtle);margin-bottom:20px;line-height:1.6}
+.email-form{display:flex;gap:8px;flex-wrap:wrap}
+.email-input{flex:1;min-width:200px;padding:13px 16px;border:1px solid var(--border);border-radius:10px;font-family:var(--sans);font-size:14px;color:var(--ink);background:#fff;outline:none;transition:border-color .2s}
+.email-input:focus{border-color:var(--blue)}
+.email-btn{padding:13px 22px;background:linear-gradient(135deg,#2355f5,#009af6);color:#fff;border:none;border-radius:10px;font-family:var(--head);font-size:14px;font-weight:700;cursor:pointer;transition:opacity .2s;white-space:nowrap}
+.email-btn:hover{opacity:.88}
+.email-success{display:none;text-align:center;padding:16px;color:#16a34a;font-weight:600;font-size:15px}
+
+/* UPCOMING POSTS */
+.upcoming{max-width:860px;margin:0 auto;padding:0 24px 80px}
+.upcoming h2{font-family:var(--head);font-size:26px;font-weight:700;color:var(--ink);margin-bottom:24px;text-align:center}
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.post-card{background:#fff;border:1px solid rgba(35,85,245,.1);border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(35,85,245,.05);transition:transform .2s,box-shadow .2s}
+.post-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(35,85,245,.1)}
+.post-tag{display:inline-block;font-size:10px;font-weight:700;color:var(--blue);background:rgba(35,85,245,.07);border-radius:50px;padding:3px 10px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+.post-card h3{font-family:var(--head);font-size:16px;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:8px}
+.post-card p{font-size:13px;color:var(--subtle);line-height:1.65}
+.post-soon{margin-top:14px;font-size:11px;font-weight:600;color:var(--subtle);display:flex;align-items:center;gap:5px}
+.soon-dot{width:6px;height:6px;border-radius:50%;background:var(--border);display:inline-block}
+
+/* FOOTER */
+footer{background:#fff;border-top:1px solid var(--border);padding:32px 24px;text-align:center}
+footer p{font-size:13px;color:var(--subtle)}
+footer a{color:var(--primary-c);text-decoration:none;font-weight:600}
+
+@media(max-width:600px){
+  .blog-hero{padding:90px 20px 48px}
+  .email-form{flex-direction:column}
+  .email-btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Cutmage</a>
+    <a href="/#tool" class="nav-cta">Remove Background Free</a>
+  </div>
+</header>
+
+<main>
+  <div class="blog-hero">
+    <div class="blog-hero-tag">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Coming Soon
+    </div>
+    <h1>Background Removal <span>Tips & Guides</span></h1>
+    <p>Tutorials on product photography, e-commerce image editing, and getting the most out of the Cutmage API — all completely free.</p>
+  </div>
+
+  <div class="email-box">
+    <h2>Get notified when we publish</h2>
+    <p>We'll send you practical guides on product photography, e-commerce listings, and image automation — no spam.</p>
+    <form class="email-form" id="email-form">
+      <input type="email" class="email-input" placeholder="you@example.com" required aria-label="Email address"/>
+      <button type="submit" class="email-btn">Notify Me</button>
+    </form>
+    <div class="email-success" id="email-success">✓ You're on the list! We'll notify you when articles go live.</div>
+  </div>
+
+  <div class="upcoming">
+    <h2>Articles coming soon</h2>
+    <div class="posts-grid">
+      <div class="post-card">
+        <span class="post-tag">E-Commerce</span>
+        <h3>How to Remove Background from Product Photos for Amazon</h3>
+        <p>Step-by-step guide to getting marketplace-ready white background images that pass Amazon's strict image policy.</p>
+        <div class="post-soon"><span class="soon-dot"></span> Coming soon</div>
+      </div>
+      <div class="post-card">
+        <span class="post-tag">Guide</span>
+        <h3>Free Transparent PNG Maker — When & Why to Use It</h3>
+        <p>When you need a transparent background vs. a white one — and how to get pixel-perfect cutouts every time.</p>
+        <div class="post-soon"><span class="soon-dot"></span> Coming soon</div>
+      </div>
+      <div class="post-card">
+        <span class="post-tag">Photography</span>
+        <h3>Remove Background from Portrait Photos Free Online</h3>
+        <p>Get clean headshots, LinkedIn photos, and ID images with hair-precise background removal in under 5 seconds.</p>
+        <div class="post-soon"><span class="soon-dot"></span> Coming soon</div>
+      </div>
+      <div class="post-card">
+        <span class="post-tag">Developer</span>
+        <h3>Automate Product Image Background Removal with the Cutmage API</h3>
+        <p>How to batch-process hundreds of product photos programmatically using Python and the REST API.</p>
+        <div class="post-soon"><span class="soon-dot"></span> Coming soon</div>
+      </div>
+      <div class="post-card">
+        <span class="post-tag">Tutorial</span>
+        <h3>Background Remover No Watermark — Full Comparison 2024</h3>
+        <p>We tested five free background removers. Here's what we found about watermarks, resolution limits, and speed.</p>
+        <div class="post-soon"><span class="soon-dot"></span> Coming soon</div>
+      </div>
+      <div class="post-card">
+        <span class="post-tag">E-Commerce</span>
+        <h3>Get a White Background for Etsy & Shopify in 30 Seconds</h3>
+        <p>Marketplace requirements, best practices for product images, and how to automate the whole process.</p>
+        <div class="post-soon"><span class="soon-dot"></span> Coming soon</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Cutmage — <a href="/">Free AI Background Remover</a> · <a href="/#faq">FAQ</a> · <a href="/#api">API</a></p>
+</footer>
+
+<script>
+document.getElementById('email-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  this.style.display = 'none';
+  document.getElementById('email-success').style.display = 'block';
+});
+</script>
+</body>
+</html>
